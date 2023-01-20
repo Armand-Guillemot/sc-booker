@@ -1,0 +1,38 @@
+<div class="container" style="padding-top:20px;padding-bottom:20px;">
+  <div style="max-width:700px;margin:0 auto;">
+    <div style="  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap:7.5px;">
+      <%= link_to 'Back', properties_path %>
+      <h2 class="" style="text-align:center;">
+        <%= @property.name %>
+      </h2>
+      <%= link_to 'Book', new_reservation_path(property_id: @property.id), class:"btn btn-primary" %>
+    </div>
+    <div class="spacer"></div>
+    <div class="show-property" style="display: flex; align-items: center;justify-content:space-around;width:100%;">
+      <p>
+        <i class="fas fa-users"></i>
+        <%= @property.capacity %>
+        Guests
+      </p>
+      <p>
+        <i class="fas fa-bed"></i>
+        <%= @property.bedrooms %>
+        Bedrooms
+      </p>
+      <p>
+        <i class="fas fa-bath"></i>
+        <%= @property.bathrooms %>
+        Bathrooms
+      </p>
+    </div>
+    <div class="spacer"></div>
+    <div style="max-width:700px;border-radius:10px;overflow:hidden" class="">
+      <%= cl_image_tag @property.main_photo.key, :crop=>"fill", style:"width:100%;" %>
+      <%= render "shared/carousel", property: @property %>
+    </div>
+    <%= link_to 'Edit', edit_property_path(@property) if current_user.admin%>
+  </div>
+</div>

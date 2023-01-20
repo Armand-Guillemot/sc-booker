@@ -1,20 +1,90 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Booker</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
-
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-
     <%= yield %>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        disable: false,
+        delay: 0, // values from 0 to 3000, with step 50ms
+        duration: 400, // values from 0 to 3000, with step 50ms
+        easing: 'ease-in-out-quart', // default easing for AOS animations
+        once: false, // whether animation should happen only once - while scrolling down
+        mirror: false, // whether elements should animate out while scrolling past them // if you are using turbolinks
+        offset: 0, // offset (in px) from the original trigger point
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
+    <script>
+      new Glider(document.querySelector('.glider'), {
+      
+      // `auto` allows automatic responsive
+      // width calculations
+        slidesToShow: "auto",
+      
+      
+      
+      // should have been named `itemMinWidth`
+      // slides grow to fit the container viewport
+      // ignored unless `slidesToShow` is set to `auto`
+      
+      
+      
+      
+      
+      
+      // if true, slides wont be resized to fit viewport
+      // requires `itemWidth` to be set
+      // * this may cause fractional slides
+      exactWidth: false,
+      
+      // speed aggravator - higher is slower
+      duration: 1,
+      
+      // dot container element or selector
+      dots: '#dots',
+      
+      
+      // allow mouse dragging
+      draggable: true,
+      // how much to scroll with each mouse delta
+      dragVelocity: 1,
+      
+      // use any custom easing function
+      // compatible with most easing plugins
+      easing: function (x, t, b, c, d) {
+        return c*(t/=d)*t + b;
+      },
+      
+      // event control
+      scrollPropagate: true,
+      eventPropagate: true,
+      
+      // Force centering slide after scroll event
+      scrollLock: true,
+      // how long to wait after scroll event before locking
+      // if too low, it might interrupt normal scrolling
+      scrollLockDelay: 0,
+      
+      // Force centering slide after resize event
+      resizeLock: true,
+      
+      // Glider.js breakpoints are mobile-first
+      
+      });
+    </script>
   </body>
 </html>

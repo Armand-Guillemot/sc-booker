@@ -1,0 +1,22 @@
+<%= simple_form_for(@reservation) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <div class="form-inputs">
+    <% if params[:property_id].present? %>
+      <%= f.input :property_id, input_html: {value: params[:property_id]}, as: :hidden %>
+    <% else %>
+      <%= f.association :property %>
+    <% end %>
+    <div style="display:flex;align-items:center;justify-content:space-around;gap:10px;">
+      <%= f.input :start_date, as: :datetime_field %>
+      <%= f.input :end_date, as: :date %>
+    </div>
+    <%= f.input :user_id, input_html: {value: current_user.id}, as: :hidden %>
+    <%= f.input :guest_count, as: :select, collection: (1..100) %>
+    <%= f.input :comment %>
+  </div>
+  <div class="spacer-sm"></div>
+  <div class="form-actions">
+    <%= f.button :submit, class:"btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,17 @@
+<div style="max-width:700px;margin:0 auto;padding:20px;">
+  <% if params[:property_id].present? && Property.find_by_id(params[:property_id]).present? %>
+    <h1 style="text-align:center;">New Reservation for<br>
+      <%= Property.find_by_id(params[:property_id]).name %></h1>
+    <div class="spacer"></div>
+    <%= render 'shared/property_calendar', property: Property.find_by_id(params[:property_id]) %>
+  <% else %>
+    <h1>New Reservation</h1>
+  <% end %>
+  <div class="spacer"></div>
+  <%= render 'form', reservation: @reservation %>
+  <% if params[:property_id].present? && Property.find_by_id(params[:property_id]).present? %>
+    <%= link_to 'Back', property_path(Property.find_by_id(params[:property_id])) %>
+  <% else %>
+    <%= link_to 'Back', properties_path %>
+  <% end %>
+</div>

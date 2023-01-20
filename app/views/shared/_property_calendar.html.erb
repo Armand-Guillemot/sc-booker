@@ -1,0 +1,10 @@
+<%= month_calendar(events: property.reservations.where(status: 2), attribute: :start_date, end_attribute: :end_date) do |date, reservations| %>
+  <%= date.day %>
+  <% reservations.each do |reservation| %>
+    <p style="font-size:.75rem;margin-bottom:0;text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;">
+      <%= reservation.user.first_name %>
+    </p>
+  <% end %>
+<% end %>

@@ -11,3 +11,80 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "simple_calendar";
+
+
+.spacer {
+  height:50px;
+}
+.spacer-sm {
+  height:25px;
+}
+
+
+
+  @media only screen and (max-width: 550px) {
+        .show-property {
+            flex-direction:column;
+            gap: 10px;
+        }
+    }
+
+
+.simple-calendar .day {
+    height: 80px;
+    max-width: 10.285714vw!important;
+}
+
+.calendar-heading {
+  text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    --bs-table-accent-bg: none;
+
+}
+
+.awesom-title {
+  display:flex;
+  align-items:center;
+  justify-content: flex-start;
+  gap:7.5px;
+  margin-bottom: 5px;
+  >* {
+    font-size: 18px;
+  }
+}
+
+
+
+
+
+.form-container {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:calc(100vh - 66px);
+  .form {
+    min-width: 300px;
+  }
+}
+
+
+
+.simple_form {
+
+}
+
+
+
+.form-inputs {
+  >* {
+    margin: 20px auto;
+  }
+}
+

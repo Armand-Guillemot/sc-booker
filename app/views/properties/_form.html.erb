@@ -1,0 +1,73 @@
+<%= simple_form_for(@property) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <div class="form-inputs">
+    <div class="my-label awesom-title" style="float: right;margin:0;">
+      <i class="fas fa-toggle-on"></i>
+      <p style="margin:0;">Réservable ?</p>
+      <%= f.input :reservable, label: false %>
+    </div>
+    <div class="my-label">
+      <div class="awesom-title">
+        <i class="fas fa-file-signature"></i>
+        <p style="margin:0;">Property Name</p>
+      </div>
+      <%= f.input :name, label: false %>
+    </div>
+    <!--     <div class="my-label">
+      <div class="awesom-title">
+        <i class="fas fa-list"></i>
+        <p style="margin:0;">Property Type</p>
+      </div>
+      <%= f.input :property_type, label: false %>
+    </div> -->
+    <div class="my-label">
+      <div class="awesom-title">
+        <i class="fas fa-users"></i>
+        <p style="margin:0;">Capacity</p>
+      </div>
+      <%= f.input :capacity, label: false %>
+    </div>
+    <div class="my-label">
+      <div class="awesom-title">
+        <i class="fas fa-bed"></i>
+        <p style="margin:0;">Bedrooms</p>
+      </div>
+      <%= f.input :bedrooms, label: false %>
+    </div>
+    <div class="my-label">
+      <div class="awesom-title">
+        <i class="fas fa-bath"></i>
+        <p style="margin:0;">Bathrooms</p>
+      </div>
+      <%= f.input :bathrooms, label: false %>
+    </div>
+    <div class="">
+      <div class="awesom-title">
+        <i class="fas fa-image"></i>
+        <p style="margin:0;">Main Photo</p>
+      </div>
+      <% if @property.main_photo.attached? %>
+        <div style="max-width:700px;" class="">
+          <%= cl_image_tag @property.main_photo.key, :crop=>"fill", style:"width:100%;" %>
+        </div>
+      <% end %>
+      <%= f.file_field :main_photo, label: "Main photo" %>
+    </div>
+    <div class="">
+      <div class="awesom-title">
+        <i class="fas fa-images"></i>
+        <p style="margin:0;">Other photos</p>
+      </div>
+      <% if @property.photos.attached? %>
+        <div style="max-width:700px;" class="">
+          <%= render "shared/carousel", property: @property %>
+        </div>
+      <% end %>
+      <%= f.file_field :photos, multiple: true, label: "Other photos" %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, class:"btn btn-primary", style:"float: right;" %>
+  </div>
+<% end %>
