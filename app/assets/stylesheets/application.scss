@@ -181,7 +181,7 @@ h1, h2, h3 {
 
   $open-nav-height: 100vh;
   $dark: black;
-  $primary-color: #0d6efd;
+  $primary-color: black;
   $navbar-height: 66px;
 
 
@@ -195,7 +195,7 @@ h1, h2, h3 {
   position: absolute;
   width: 100%;
   transform: scaleX(0);
-  height: 4px;
+  height: 2px;
   bottom: 0;
   left: 0;
   border-radius:2px;
