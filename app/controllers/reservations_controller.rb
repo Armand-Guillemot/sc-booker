@@ -1,9 +1,10 @@
 class ReservationsController < ApplicationController
-  before_action :set_reservation, only: %i[ show edit update destroy ]
+  before_action :set_reservation, only: %i[ show edit update destroy cancel]
   after_action :days, only: [:create, :update]
+  after_action :check_admin, only: [:create, :update]
   # GET /reservations or /reservations.json
   def index
-    @reservations = Reservation.all
+    @reservations = Reservation.where(user: current_user)
   end
 
   # GET /reservations/1 or /reservations/1.json
@@ -19,16 +20,21 @@ class ReservationsController < ApplicationController
   def edit
   end
 
+  def cancel
+    @reservation.update(status:0)
+    redirect_to reservations_path, notice: "Your reservation was successfully cancelled."
+  end
+
   # POST /reservations or /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
 
     respond_to do |format|
       if @reservation.save
-        format.html { redirect_to reservation_url(@reservation), notice: "Reservation was successfully created." }
+        format.html { redirect_to reservations_url, notice: "Your reservation was successfully created." }
         format.json { render :show, status: :created, location: @reservation }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to property_url(@reservation.property), notice: "There was a time clash with another reservation." }
         format.json { render json: @reservation.errors, status: :unprocessable_entity }
       end
     end
@@ -60,7 +66,9 @@ class ReservationsController < ApplicationController
   private
   def days
     @reservation.update(days: (@reservation.end_date - @reservation.start_date)/1.day)
-
+  end
+  def check_admin
+    @reservation.update(status: 2)
   end
   # Use callbacks to share common setup or constraints between actions.
   def set_reservation

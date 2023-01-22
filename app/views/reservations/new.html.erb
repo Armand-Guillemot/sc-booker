@@ -3,7 +3,6 @@
     <h1 style="text-align:center;">New Reservation for<br>
       <%= Property.find_by_id(params[:property_id]).name %></h1>
     <div class="spacer"></div>
-    <%= render 'shared/property_calendar', property: Property.find_by_id(params[:property_id]) %>
   <% else %>
     <h1>New Reservation</h1>
   <% end %>

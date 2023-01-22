@@ -1,39 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Reservations</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>User</th>
-      <th>Property</th>
-      <th>Guest count</th>
-      <th>Comment</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @reservations.each do |reservation| %>
-      <tr>
-        <td><%= reservation.start_date %></td>
-        <td><%= reservation.end_date %></td>
-        <td><%= reservation.user_id %></td>
-        <td><%= reservation.property_id %></td>
-        <td><%= reservation.guest_count %></td>
-        <td><%= reservation.comment %></td>
-        <td><%= reservation.status %></td>
-        <td><%= link_to 'Show', reservation %></td>
-        <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
-        <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Reservation', new_reservation_path %>
+<div style="max-width:700px;margin:0 auto;">
+  <div class="spacer"></div>
+  <h2>My Calendar</h2>
+  <%= render 'shared/user_calendar', user: current_user %>
+  <div class="spacer"></div>
+  <h2>My Reservations</h2>
+  <% @reservations.where.not(status: 0).each do |reservation| %>
+    <div class="reservation-line">
+      <p style="font-weight:bold;"><%= reservation.property.name %></p>
+      <p><%= reservation.days %></p>
+      <%= link_to "Cancel", cancel_reservation_path(reservation), class:"btn btn-secondary", data:{ confirm: "Are you sure?", disable_with: "Processing..." } %>
+    </div>
+  <% end %>
+</div>

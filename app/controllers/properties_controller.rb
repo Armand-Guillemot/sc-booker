@@ -3,7 +3,20 @@ class PropertiesController < ApplicationController
 
   # GET /properties or /properties.json
   def index
-    @properties = Property.all
+    if params[:search]
+      if params[:search] == ""
+        @search_results_properties = Property.all
+      else
+        @search_results_properties = Property.search_by_name(params[:search])
+      end
+
+      respond_to do |format|
+        format.js { render partial: 'search-results'}
+      end
+    else
+      @properties = Property.all
+    end
+
   end
 
   # GET /properties/1 or /properties/1.json
@@ -65,6 +78,6 @@ class PropertiesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def property_params
-    params.require(:property).permit(:name, :reservable, :property_type, :capacity, :bedrooms, :bathrooms, :main_photo, photos:[])
+    params.require(:property).permit(:name, :reservable, :property_type, :capacity, :bedrooms, :bathrooms, :main_photo, :avatar, photos:[])
   end
 end

@@ -1,4 +1,4 @@
-<%= month_calendar(events: property.reservations.where.not(status: 0), attribute: :start_date, end_attribute: :end_date) do |date, reservations| %>
+<%= month_calendar(events: user.reservations.where.not(status:0), attribute: :start_date, end_attribute: :end_date) do |date, reservations| %>
   <% if reservations.present? %>
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
       <p style="<%= 'font-weight: bold;text-decoration: underline black;' if date == Date.today %>"><%= date.day %></p>
@@ -11,7 +11,7 @@
     <p style="font-size:.75rem;margin-bottom:0;text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;margin-bottom:10px;">
-      <span style="font-weight:bold;"><%= reservation.user.first_name %></span>
+      <span style="font-weight:bold;"><%= reservation.property.name %></span>
       <br>
       <% if reservation.start_date.to_date == date %>
         <span style="font-weight:bold;">A:</span> <%= reservation.start_date.strftime("%Hh%M") %>

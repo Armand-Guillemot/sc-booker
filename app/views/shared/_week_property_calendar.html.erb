@@ -1,4 +1,4 @@
-<%= month_calendar(events: property.reservations.where.not(status: 0), attribute: :start_date, end_attribute: :end_date) do |date, reservations| %>
+<%= week_calendar(events: property.reservations.where.not(status: 0), attribute: :start_date, end_attribute: :end_date) do |date, reservations| %>
   <% if reservations.present? %>
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
       <p style="<%= 'font-weight: bold;text-decoration: underline black;' if date == Date.today %>"><%= date.day %></p>
