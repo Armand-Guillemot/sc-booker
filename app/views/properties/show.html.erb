@@ -11,6 +11,10 @@
       <%= link_to '<i class="fas fa-edit" style="margin-right:5px;"></i> Edit'.html_safe, edit_property_path(@property), class:"btn btn-success", style:"#{'opacity: 0;  pointer-events: none;cursor: default;text-decoration: none;color: black;' unless current_user.admin}" %>
     </div>
     <div class="spacer"></div>
+    <h4 style=""><%= @property.name %>' Calendar</h4>
+    <div class="spacer-sm"></div>
+    <%= render 'shared/property_calendar', property: @property %>
+    <div class="spacer"></div>
     <div style="max-width:800px;" class="">
       <div style="border-radius:10px;overflow:hidden;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
         <%= cl_image_tag @property.main_photo.key, :crop=>"fill", :quality=>"auto", style:"width:100%;" %>
@@ -56,10 +60,6 @@
           <%= render 'reservations/form', reservation: Reservation.new(), property: @property%>
         </div>
       </div>
-      <div class="spacer"></div>
-      <h4 style=""><%= @property.name %>' Calendar</h4>
-      <div class="spacer-sm"></div>
-      <%= render 'shared/property_calendar', property: @property %>
     </div>
   </div>
 </div>

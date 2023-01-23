@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :reservations
 
+  validates :email, :first_name, :email, presence: true
+
   def get_unavailable_days(reservation = nil)
     if reservation.present?
       confirmed_reservations = self.reservations.where.not(status:0).where.not(id: reservation.id)

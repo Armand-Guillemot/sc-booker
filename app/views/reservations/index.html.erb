@@ -2,6 +2,9 @@
   <div class="spacer"></div>
   <h1>Reservations</h1>
   <div class="spacer"></div>
+  <% unless @reservations.present? %>
+    <p>You don't have any pending or confirmed reservations. To make one, go to <a href="/properties">properties.</a></p>
+  <% end %>
   <% @reservations.where.not(status: 0).each do |reservation| %>
     <% property = reservation.property %>
     <div style="    padding: 20px;
