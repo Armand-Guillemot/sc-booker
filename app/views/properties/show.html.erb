@@ -1,5 +1,5 @@
 <div class="container" style="padding-top:20px;padding-bottom:20px;">
-  <div style="max-width:700px;margin:0 auto;">
+  <div style="max-width:800px;margin:0 auto;">
     <div style="  display:flex;
   align-items:center;
   justify-content: space-between;
@@ -11,7 +11,7 @@
       <%= link_to '<i class="fas fa-edit" style="margin-right:5px;"></i> Edit'.html_safe, edit_property_path(@property), class:"btn btn-success", style:"#{'opacity: 0;  pointer-events: none;cursor: default;text-decoration: none;color: black;' unless current_user.admin}" %>
     </div>
     <div class="spacer"></div>
-    <div style="max-width:700px;" class="">
+    <div style="max-width:800px;" class="">
       <div style="border-radius:10px;overflow:hidden;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
         <%= cl_image_tag @property.main_photo.key, :crop=>"fill", style:"width:100%;" %>
         <%= render "shared/carousel", property: @property %>

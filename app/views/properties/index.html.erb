@@ -1,5 +1,5 @@
 <div class="container" style="padding-top:20px;padding-bottom:20px;">
-  <div id="search-results" style="max-width:700px;margin:0 auto;">
+  <div id="search-results" style="max-width:800px;margin:0 auto;">
     <div style="  display:flex;
   align-items:center;
   justify-content:center;
@@ -32,8 +32,8 @@
       <% @properties.all.each do |property| %>
         <div class="property-card">
           <div style="gap: 10px;display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-            <h4><i style="margin-right: 10px;" class="fas fa-house"></i><%= property.name %></h4>
-            <%= link_to 'Book <i class="fas fa-caret-right" style="margin-left:5px;"></i>'.html_safe, property_path(property), class:"btn btn-success" %>
+            <h4><%= property.name %></h4>
+            <%= link_to '<i class="fas fa-house"></i>'.html_safe, property_path(property), class:"btn btn-success" %>
           </div>
           <div class="property-card-content">
             <%= cl_image_tag property.main_photo.key, :crop=>"fill", style:"width:150px;height:150px;border-radius:500px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;" %>

@@ -48,7 +48,7 @@
         <p style="margin:0;">Main Photo</p>
       </div>
       <% if @property.main_photo.attached? %>
-        <div style="max-width:700px;" class="">
+        <div style="max-width:800px;" class="">
           <%= cl_image_tag @property.main_photo.key, :crop=>"fill", style:"width:100%;" %>
         </div>
       <% end %>
@@ -60,7 +60,7 @@
         <p style="margin:0;">Other photos</p>
       </div>
       <% if @property.photos.attached? %>
-        <div style="max-width:700px;" class="">
+        <div style="max-width:800px;" class="">
           <%= render "shared/carousel", property: @property %>
         </div>
       <% end %>

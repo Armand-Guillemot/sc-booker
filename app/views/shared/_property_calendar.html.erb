@@ -1,11 +1,21 @@
 <%= month_calendar(events: property.reservations.where.not(status: 0), attribute: :start_date, end_attribute: :end_date) do |date, reservations| %>
   <% if reservations.present? %>
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
-      <p style="<%= 'font-weight: bold;text-decoration: underline black;' if date == Date.today %>"><%= date.day %></p>
+      <p style="
+    margin: 0;
+    display: inline-block;
+    padding: 2.5px 5px;
+    border-radius: 5px;
+    <%= 'background: #198754!important;color: white!important;' if date == Date.today %>"><%= date.day %></p>
       <%= cl_image_tag reservations.first.property.main_photo.key, :crop=>"fill", style:"width:20px;height:20px;border-radius:500px;" %>
     </div>
   <% else %>
-    <p style="<%= 'font-weight: bold;text-decoration: underline black;' if date == Date.today %>"><%= date.day %></p>
+    <p style="
+    margin: 0;
+    display: inline-block;
+    padding: 2.5px 5px;
+    border-radius: 5px;
+    <%= 'background: #198754!important;color: white!important;' if date == Date.today %>"><%= date.day %></p>
   <% end %>
   <% reservations.each do |reservation| %>
     <p style="font-size:.75rem;margin-bottom:0;text-overflow: ellipsis;
