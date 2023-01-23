@@ -22,12 +22,12 @@ class ReservationsController < ApplicationController
 
   def cancel
     @reservation.update(status:0)
-    redirect_to reservations_path, notice: "Your reservation was successfully cancelled."
+    redirect_back fallback_location: reservations_path, notice: "Your reservation was successfully cancelled."
   end
 
   def approve
     @reservation.update(status:2)
-    redirect_to reservations_path, notice: "The reservation was successfully approved."
+    redirect_back fallback_location: reservations_path, notice: "The reservation was successfully approved."
   end
 
   # POST /reservations or /reservations.json
@@ -82,6 +82,6 @@ class ReservationsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def reservation_params
-    params.require(:reservation).permit(:start_date, :end_date, :user_id, :property_id, :guest_count, :comment, :status, :days)
+    params.require(:reservation).permit(:start_date, :end_date, :user_id, :property_id, :guest_count, :comment, :status, :days, :is_private)
   end
 end

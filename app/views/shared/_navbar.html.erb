@@ -27,7 +27,7 @@
           <a  class="" href="<%= reservations_path %>" >
             <p class="hover-underline-animation norm"><i style="margin-right:5px;" class="fas fa-calendar"></i>Reservations</p>
           </a>
-          <a class="" href="<%= properties_path %>" >
+          <a data-turbolinks="false" class="" href="<%= properties_path %>" >
             <p class="hover-underline-animation norm"><i style="margin-right:5px;" class="fas fa-house"></i>Properties</p>
           </a>
           <% if current_user %>
@@ -38,7 +38,7 @@
     justify-content: center;
     gap: 10px;" href="<%= edit_user_registration_path(current_user) %>" >
                 <% if current_user.avatar.attached? %>
-                  <%= cl_image_tag current_user.avatar.key, :crop=>"fill", :gravity=>"face", :quality=>"auto", style:"width:40px;height:40px;border-radius:500px;box-shadow: rgba(0, 0, 0, 0.35) 0px 2.5px 7.5px;" %>
+                  <%= cl_image_tag current_user.avatar.key, :crop=>"fill", :height=>500, :width=>500, :gravity=>"face", :quality=>"auto", style:"width:40px;height:40px;border-radius:500px;box-shadow: rgba(0, 0, 0, 0.35) 0px 2.5px 7.5px;" %>
                 <% else %>
                   <img src="/help_avatar.png" style="width:40px;height:40px;border-radius:500px;box-shadow: rgba(0, 0, 0, 0.35) 0px 2.5px 7.5px;" alt="">
                 <% end %>

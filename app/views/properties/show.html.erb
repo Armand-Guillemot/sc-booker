@@ -4,23 +4,19 @@
   align-items:center;
   justify-content: space-between;
   gap:7.5px;">
-      <%= link_to '<i class="fas fa-caret-left" style="margin-right:5px;"></i> Back'.html_safe, properties_path, class:"btn btn-secondary" %>
+      <%= link_to '<i class="fas fa-caret-left" style="margin-right:5px;"></i> Back'.html_safe, properties_path, class:"btn btn-secondary", :"data-turbolinks" => false %>
       <h2 class="" style="text-align:center;">
         <%= @property.name %>
       </h2>
       <%= link_to '<i class="fas fa-edit" style="margin-right:5px;"></i> Edit'.html_safe, edit_property_path(@property), class:"btn btn-success", style:"#{'opacity: 0;  pointer-events: none;cursor: default;text-decoration: none;color: black;' unless current_user.admin}" %>
     </div>
     <div class="spacer"></div>
-    <h4 style=""><%= @property.name %>' Calendar</h4>
-    <div class="spacer-sm"></div>
     <%= render 'shared/property_calendar', property: @property %>
     <div class="spacer"></div>
     <div style="max-width:800px;" class="">
-      <div style="border-radius:10px;overflow:hidden;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+      <!--       <div style="border-radius:10px;overflow:hidden;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
         <%= cl_image_tag @property.main_photo.key, :crop=>"fill", :quality=>"auto", style:"width:100%;" %>
-        <%= render "shared/carousel", property: @property %>
-      </div>
-      <div class="spacer"></div>
+      </div> -->
       <div class="info-and-reservation">
         <div style="padding:20px;" class="info">
           <h4 style="">About <%= @property.name %></h4>

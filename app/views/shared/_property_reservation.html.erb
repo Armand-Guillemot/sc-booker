@@ -1,0 +1,104 @@
+<% property = reservation.property %>
+<div style="    padding: 20px;
+    border-radius: 10px;margin-top:20px;">
+  <div style="display: flex;
+    align-items: center;
+    justify-content: space-between;">
+    <div style="    display: flex;
+    align-items: center;
+    justify-content: center;gap:10px;">
+      <div class="" style="text-decoration: none;
+    color: black;display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7.5px;" href="<%= property_path(reservation.property) %>" >
+        <% if reservation.user.avatar.attached? %>
+          <%= cl_image_tag reservation.user.avatar.key, :gravity=>"face", :crop=>"fill", :height=>500, :width=>500, :quality=>"auto", style:"width:60px;height:60px;border-radius:500px;box-shadow: rgba(0, 0, 0, 0.15) 0px 2.5px 7.px;" %>
+        <% else %>
+          <img src="/help_avatar.png" style="width:60px;height:60px;border-radius:500px;" alt="">
+        <% end %>
+        <p  style="font-size:18px;margin-bottom:0;"><%= reservation.user.first_name %></p>
+      </div>
+    </div>
+    <div class="">
+      <p style="margin-bottom:0;">
+        <i class="fas fa-moon"></i>
+        <%= reservation.days %>
+      </p>
+    </div>
+    <div class="">
+      <p style="margin-bottom:0;">
+        <i class="fas fa-users"></i>
+        <%= reservation.guest_count %>
+      </p>
+    </div>
+    <div>
+      <p style="margin-bottom:0;">
+        <% if reservation.status == 2 %>
+          <span style="height: 10px;
+    display: inline-block;
+    width: 10px;
+    border-radius: 50px;
+    background: darkgreen;"></span>
+          Approved
+        <% else %>
+          <span style="height: 10px;
+    display: inline-block;
+    width: 10px;
+    border-radius: 50px;
+    background: orange;"></span>
+          Pending
+        <% end %>
+      </p>
+    </div>
+  </div>
+  <div style="height:20px;"></div>
+  <div style="  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap:7.5px;">
+    <div style="margin-bottom:0;">
+      <div class="">
+        Arrival:
+      </div>
+      <div>
+        <i class="fas fa-calendar"></i>
+        <%= reservation.start_date.strftime("%B %d, %Y") %>
+      </div>
+      <div>
+        <i class="fas fa-clock"></i>
+        <%= reservation.start_date.strftime("%H:%M") %>
+      </div>
+    </div>
+    <div style="margin-bottom:0;">
+      <div class="">
+        Departure:
+      </div>
+      <div>
+        <i class="fas fa-calendar"></i>
+        <%= reservation.end_date.strftime("%B %d, %Y") %>
+      </div>
+      <div>
+        <i class="fas fa-clock"></i>
+        <%= reservation.end_date.strftime("%H:%M") %>
+      </div>
+    </div>
+    <div class="">
+      <% if reservation.is_private %>
+        <i class="fas fa-user-lock"></i>
+        Private
+      <% else %>
+        <i class="fas fa-user-plus"></i>
+        Public
+      <% end %>
+    </div>
+    <div class="">
+      <% if current_user.admin && reservation.status == 1 %>
+        <%= link_to '<i class="fas fa-calendar-plus"></i> Approve'.html_safe, approve_reservation_path(reservation), class:"btn btn-success", style:"display: block;margin-bottom: 5px;", data:{ disable_with: "Processing..." } %>
+      <% end %>
+      <% if current_user.admin || current_user == reservation.user %>
+        <%= link_to '<i class="fas fa-times"></i> Cancel'.html_safe, cancel_reservation_path(reservation), class:"btn btn-secondary", style:"width:100%;", data:{ confirm: "Are you sure?", disable_with: "Processing..." } %>
+      <% end %>
+    </div>
+  </div>
+</div>

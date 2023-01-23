@@ -21,27 +21,6 @@
       </div>
       <%= f.input :property_type, label: false %>
     </div> -->
-    <div class="my-label">
-      <div class="awesom-title">
-        <i class="fas fa-users"></i>
-        <p style="margin:0;">Capacity</p>
-      </div>
-      <%= f.input :capacity, label: false %>
-    </div>
-    <div class="my-label">
-      <div class="awesom-title">
-        <i class="fas fa-bed"></i>
-        <p style="margin:0;">Bedrooms</p>
-      </div>
-      <%= f.input :bedrooms, label: false %>
-    </div>
-    <div class="my-label">
-      <div class="awesom-title">
-        <i class="fas fa-bath"></i>
-        <p style="margin:0;">Bathrooms</p>
-      </div>
-      <%= f.input :bathrooms, label: false %>
-    </div>
     <div class="">
       <div class="awesom-title">
         <i class="fas fa-image"></i>
@@ -53,18 +32,6 @@
         </div>
       <% end %>
       <%= f.file_field :main_photo, label: "Main photo" %>
-    </div>
-    <div class="">
-      <div class="awesom-title">
-        <i class="fas fa-images"></i>
-        <p style="margin:0;">Other photos</p>
-      </div>
-      <% if @property.photos.attached? %>
-        <div style="max-width:800px;" class="">
-          <%= render "shared/carousel", property: @property %>
-        </div>
-      <% end %>
-      <%= f.file_field :photos, multiple: true, label: "Other photos" %>
     </div>
   </div>
   <div class="form-actions">

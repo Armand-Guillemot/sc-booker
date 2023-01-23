@@ -1,39 +1,27 @@
 <%= month_calendar(events: property.reservations.where.not(status: 0), attribute: :start_date, end_attribute: :end_date) do |date, reservations| %>
-  <% if reservations.present? %>
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
-      <p style="
+  <p style="
     margin: 0;
     display: inline-block;
     padding: 2.5px 5px;
     border-radius: 5px;
     <%= 'background: #198754!important;color: white!important;' if date == Date.today %>"><%= date.day %></p>
-      <%= cl_image_tag reservations.first.property.main_photo.key, :crop=>"fill", :quality=>"auto", style:"width:20px;height:20px;border-radius:500px;" %>
-    </div>
-  <% else %>
-    <p style="
-    margin: 0;
-    display: inline-block;
-    padding: 2.5px 5px;
-    border-radius: 5px;
-    <%= 'background: #198754!important;color: white!important;' if date == Date.today %>"><%= date.day %></p>
-  <% end %>
   <% reservations.each do |reservation| %>
-    <p style="font-size:.75rem;margin-bottom:0;text-overflow: ellipsis;
+    <a class="hover-underline-animation norm user collapse-toggle" data-toggle="collapse" href="#collapse-<%= reservation.id %>" role="button" aria-expanded="false" aria-controls="collapse-<%= reservation.id %>" style="text-decoration:none;color:black;font-size:.75rem;margin-bottom:0;text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;margin-bottom:10px;">
-      <span style="font-weight:bold;"><%= reservation.user.first_name %></span>
-      <br>
-      <% if reservation.start_date.to_date == date %>
-        <span style="font-weight:bold;">A:</span> <%= reservation.start_date.strftime("%Hh%M") %>
-        <br>
+    overflow: hidden;margin-bottom:5px;display:flex;align-items:center;justify-content flex-start;gap:5px;margin-top:5px;">
+      <% if reservation.user.avatar.attached? %>
+        <%= cl_image_tag reservation.user.avatar.key, :gravity=>"face", :crop=>"fill", :height=>150, :width=>150, :quality=>"auto", style:"width:20px;height:20px;border-radius:500px;" %>
+      <% else %>
+        <img src="/help_avatar.png" style="width:20px;height:20px;border-radius:500px;" alt="">
       <% end %>
-      <% if reservation.end_date.to_date == date %>
-        <span style="font-weight:bold;">D:</span> <%= reservation.end_date.strftime("%Hh%M") %>
-        <br>
-      <% end %>
-      <% if reservation.status == 1 %>
-        (pending)
-      <% end %>
-    </p>
+      <p style="margin-bottom:0;"><%= reservation.user.first_name %></p>
+    </a>
   <% end %>
 <% end %>
+<div class="">
+  <% property.reservations.where.not(status: 0).each do |reservation| %>
+    <div class="collapse" id="collapse-<%= reservation.id %>">
+      <%= render 'shared/property_reservation', reservation: reservation%>
+    </div>
+  <% end %>
+</div>

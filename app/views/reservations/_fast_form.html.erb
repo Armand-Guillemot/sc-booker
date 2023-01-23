@@ -43,15 +43,8 @@
     } %>
       </div>
     </div>
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+    <div style="display:flex;justify-content:space-between;gap:10px;">
       <div style="max-width:50%;" class="my-label">
-        <div class="awesom-title">
-          <i class="fas fa-users"></i>
-          <p style="margin:0;">Guests</p>
-        </div>
-        <%= f.input :guest_count,label:false %>
-      </div>
-      <div style="width:50%;" class="my-label">
         <div class="awesom-title" style="margin: 0;
     justify-content: center;
     height: 100%;
@@ -59,16 +52,13 @@
           <%= f.input :is_private %>
         </div>
       </div>
-    </div>
-    <div  class="my-label">
-      <div class="awesom-title">
-        <i class="fas fa-comments"></i>
-        <p style="margin:0;">Comment</p>
+      <div style="width:50%;" class="my-label">
+        <div class="form-actions">
+          <%= f.button :submit, "Book !", class:"btn btn-success", style:"width:100%;", disabled: !current_property.reservable, data:{ disable_with: "Processing..." } %>
+        </div>
       </div>
-      <%= f.input :comment, label: false %>
     </div>
-  </div>
-  <div class="form-actions">
-    <%= f.button :submit, class:"btn btn-success", style:"width:100%;", disabled: !current_property.reservable, data:{ disable_with: "Processing..." } %>
+    <%= f.input :guest_count,label:false, input_html: {value: 1}, as: :hidden %>
+    <%= f.input :comment, label: false, input_html: {value: "Fast reservation"}, as: :hidden %>
   </div>
 <% end %>

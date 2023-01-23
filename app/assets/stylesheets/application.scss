@@ -19,7 +19,9 @@ h1, h2, h3 {
 }
 
 
-
+.form-group {
+  margin-bottom: 0;
+}
 
 
 
@@ -85,6 +87,7 @@ h1, h2, h3 {
 
 .simple-calendar table {
     margin-bottom: 0;
+    table-layout: fixed;
 }
 
 
@@ -93,6 +96,7 @@ h1, h2, h3 {
     .day {
     height: 100px;
     max-width: 10.285714vw!important;
+        overflow: hidden;
 }
 .has-events {background:rgba(255,100,100,.1)}
 .table-striped > tbody > tr:nth-of-type(odd) > * {
@@ -211,7 +215,7 @@ h1, h2, h3 {
   position: relative;
 }
 
-.hover-underline-animation:after {
+p.hover-underline-animation:after {
   content: '';
   position: absolute;
   width: 100%;
@@ -225,12 +229,32 @@ h1, h2, h3 {
   transition: transform 0.15s ease-out;
 }
 
-.user.hover-underline-animation:after {
-      z-index: -15;
-      bottom: 8px!important;
-      width: 95%!important;
+p.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: center center;
 }
-.hover-underline-animation:hover:after {
+
+a.hover-underline-animation > p {
+  position: relative;
+}
+
+a.hover-underline-animation > p:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  right: 0;
+  border-radius:2px;
+  background-color: $primary-color;
+  transform-origin: center center;
+  transition: transform 0.15s ease-out;
+
+
+}
+
+a:hover.hover-underline-animation > p:after {
   transform: scaleX(1);
   transform-origin: center center;
 }

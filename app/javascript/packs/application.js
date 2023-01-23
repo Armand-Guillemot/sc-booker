@@ -22,3 +22,11 @@ import 'bootstrap/dist/js/bootstrap'
 import 'bootstrap/dist/css/bootstrap'
 
 global.$ = require('jquery')
+
+var $myGroup = $('.collapse');
+var $myButtons = $('.collapse-toggle');
+
+
+$myGroup.on('show.bs.collapse','.collapse', function() {
+    $myGroup.find('.collapse.in').collapse('hide');
+});
