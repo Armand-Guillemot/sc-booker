@@ -13,7 +13,7 @@
     <div class="spacer"></div>
     <div style="max-width:800px;" class="">
       <div style="border-radius:10px;overflow:hidden;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
-        <%= cl_image_tag @property.main_photo.key, :crop=>"fill", style:"width:100%;" %>
+        <%= cl_image_tag @property.main_photo.key, :crop=>"fill", :quality=>"auto", style:"width:100%;" %>
         <%= render "shared/carousel", property: @property %>
       </div>
       <div class="spacer"></div>

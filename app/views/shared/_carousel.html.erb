@@ -2,7 +2,7 @@
 margin: 0 auto;">
   <div class="glider" style="margin: 0 auto;">
     <% property.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, :crop=>"fill" %>
+      <%= cl_image_tag photo.key, :crop=>"fill", :quality=>"auto" %>
     <% end %>
   </div>
   <div role="tablist" id="dots"></div>
