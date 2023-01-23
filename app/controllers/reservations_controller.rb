@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  before_action :set_reservation, only: %i[ show edit update destroy cancel]
+  before_action :set_reservation, only: %i[ show edit update destroy cancel approve]
   after_action :days, only: [:create, :update]
   after_action :check_admin, only: [:create, :update]
   # GET /reservations or /reservations.json
@@ -23,6 +23,11 @@ class ReservationsController < ApplicationController
   def cancel
     @reservation.update(status:0)
     redirect_to reservations_path, notice: "Your reservation was successfully cancelled."
+  end
+
+  def approve
+    @reservation.update(status:2)
+    redirect_to reservations_path, notice: "The reservation was successfully approved."
   end
 
   # POST /reservations or /reservations.json
@@ -68,7 +73,7 @@ class ReservationsController < ApplicationController
     @reservation.update(days: (@reservation.end_date - @reservation.start_date)/1.day)
   end
   def check_admin
-    @reservation.update(status: 2)
+    @reservation.update(status: 2) if @reservation.user.admin
   end
   # Use callbacks to share common setup or constraints between actions.
   def set_reservation

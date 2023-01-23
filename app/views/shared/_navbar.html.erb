@@ -21,18 +21,21 @@
           </label>
         </div>
         <div class="nav-links">
+          <a  class="" href="<%= root_path %>" >
+            <p class="hover-underline-animation norm"><i style="margin-right:5px;" class="fas fa-tachometer-alt"></i>Dashboard</p>
+          </a>
           <a  class="" href="<%= reservations_path %>" >
-            <p class="hover-underline-animation norm"><i style="margin-right:5px;" class="fas fa-file-contract"></i>Reservations</p>
+            <p class="hover-underline-animation norm"><i style="margin-right:5px;" class="fas fa-calendar"></i>Reservations</p>
           </a>
           <a class="" href="<%= properties_path %>" >
             <p class="hover-underline-animation norm"><i style="margin-right:5px;" class="fas fa-house"></i>Properties</p>
           </a>
           <% if current_user %>
-            <a class="" href="/sign_out" >
+            <a class="" href="/users/sign_out" >
               <i class="fas fa-sign-out-alt"></i>
             </a>
           <% else %>
-            <a class="" href="/connexion" >
+            <a class="" href="/users/sign_in" >
               <i class="fas fa-sign-in-alt mr-2"></i>
             </a>
           <% end %>

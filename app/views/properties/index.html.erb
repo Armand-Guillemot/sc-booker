@@ -2,19 +2,30 @@
   <div id="search-results" style="max-width:700px;margin:0 auto;">
     <div style="  display:flex;
   align-items:center;
-  justify-content: space-between;
+  justify-content:center;
   gap:7.5px;">
-      <%= link_to 'Back', root_path, class:"btn btn-secondary", style:"opacity: 0;  pointer-events: none;cursor: default;text-decoration: none;color: black;" %>
-      <h2 class="" style="text-align:center;">
+      <h1 class="" style="text-align:center;display:inline-block;">
         Properties
-      </h2>
-      <%= link_to 'New', new_property_path, class:"btn btn-primary", style:"#{'opacity: 0;  pointer-events: none;cursor: default;text-decoration: none;color: black;' unless current_user.admin}" %>
+      </h1>
     </div>
     <%= form_tag(properties_path, method: "get", remote: true, id:"search-form", style:"display: flex;
     align-items: center;
     justify-content: center;") do %>
-      <%= text_field_tag :search, params[:search], id:"search-field" %>
-      <%= submit_tag "Search", id:"search-sub", style:"display:none;" %>
+      <div style="display: flex;align-items:center;justify-content:space-between;width: 100%;">
+        <div style="display: flex;align-items:center;justify-content:center;">
+          <div style="display: flex;align-items:center;justify-content:center;border-bottom: 1.5px solid black;">
+            <div style="margin-right:5px;">
+              <i class="fas fa-search"></i>
+            </div>
+            <%= text_field_tag :search, params[:search], id:"search-field", style:"
+    outline: none;
+    border:none;
+    max-width: 90px;" %>
+          </div>
+          <%= submit_tag "Search", id:"search-sub", style:"display:none;" %>
+        </div>
+        <%= link_to '<i class="fas fa-plus" style="margin-right:5px;"></i> New'.html_safe, new_property_path, class:"btn btn-success", style:"#{'opacity: 0;  pointer-events: none;cursor: default;text-decoration: none;color: black;' unless current_user.admin}" %>
+      </div>
     <% end %>
     <div class="spacer"></div>
     <div id="blogpost-table">
@@ -22,7 +33,7 @@
         <div class="property-card">
           <div style="gap: 10px;display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
             <h4><i style="margin-right: 10px;" class="fas fa-house"></i><%= property.name %></h4>
-            <%= link_to 'Book', property_path(property), class:"btn btn-primary" %>
+            <%= link_to 'Book <i class="fas fa-caret-right" style="margin-left:5px;"></i>'.html_safe, property_path(property), class:"btn btn-success" %>
           </div>
           <div class="property-card-content">
             <%= cl_image_tag property.main_photo.key, :crop=>"fill", style:"width:150px;height:150px;border-radius:500px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;" %>

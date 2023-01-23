@@ -4,11 +4,11 @@
   align-items:center;
   justify-content: space-between;
   gap:7.5px;">
-      <%= link_to 'Back', properties_path, class:"btn btn-secondary" %>
+      <%= link_to '<i class="fas fa-caret-left" style="margin-right:5px;"></i> Back'.html_safe, properties_path, class:"btn btn-secondary" %>
       <h2 class="" style="text-align:center;">
         <%= @property.name %>
       </h2>
-      <%= link_to 'Edit', edit_property_path(@property), class:"btn btn-primary", style:"#{'opacity: 0;  pointer-events: none;cursor: default;text-decoration: none;color: black;' unless current_user.admin}" %>
+      <%= link_to '<i class="fas fa-edit" style="margin-right:5px;"></i> Edit'.html_safe, edit_property_path(@property), class:"btn btn-success", style:"#{'opacity: 0;  pointer-events: none;cursor: default;text-decoration: none;color: black;' unless current_user.admin}" %>
     </div>
     <div class="spacer"></div>
     <div style="max-width:700px;" class="">
