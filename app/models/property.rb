@@ -28,9 +28,7 @@ class Property < ApplicationRecord
     if confirmed_reservations.present?
       confirmed_reservations.each do |reservation|
         result_array = ((reservation.start_date.to_date + 1.day)..(reservation.end_date.to_date - 1.day)).map{ |date| date.strftime("%Y-%m-%d")}.to_a
-        if result_array.uniq.count > 1
-          result += result_array
-        end
+        result += result_array
       end
     end
     return result.uniq

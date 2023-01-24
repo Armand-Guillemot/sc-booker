@@ -39,7 +39,7 @@ class ReservationsController < ApplicationController
         format.html { redirect_to reservations_url, notice: "Your reservation was successfully created." }
         format.json { render :show, status: :created, location: @reservation }
       else
-        format.html { redirect_to property_url(@reservation.property), notice: "There was a time clash with another reservation." }
+        format.html { redirect_back fallback_location: property_url(@reservation.property), notice: "There was a time clash with another reservation." }
         format.json { render json: @reservation.errors, status: :unprocessable_entity }
       end
     end

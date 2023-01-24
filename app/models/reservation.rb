@@ -1,9 +1,15 @@
 class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :property
+  validate :end_date_after_start_date?
   validate :date_range_property
   validate :date_range_user
 
+  def end_date_after_start_date?
+    if end_date < start_date
+      errors.add :end_date, "must be after start date"
+    end
+  end
 
   def date_range_property
 
