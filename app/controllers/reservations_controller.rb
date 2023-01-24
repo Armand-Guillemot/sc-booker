@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
   after_action :check_admin, only: [:create, :update]
   # GET /reservations or /reservations.json
   def index
-    @reservations = Reservation.where(user: current_user)
+    @reservations = Reservation.where(user: current_user).order(start_date: :desc)
   end
 
   # GET /reservations/1 or /reservations/1.json

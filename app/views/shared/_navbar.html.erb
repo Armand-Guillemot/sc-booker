@@ -24,6 +24,11 @@
           <a  class="" href="<%= root_path %>" >
             <p class="hover-underline-animation norm"><i style="margin-right:5px;" class="fas fa-tachometer-alt"></i>Dashboard</p>
           </a>
+          <% if current_user.admin %>
+            <a  class="" href="<%= admin_path %>" >
+              <p class="hover-underline-animation norm"><i style="margin-right:5px;" class="fas fa-vote-yea"></i>Admin</p>
+            </a>
+          <% end %>
           <a  class="" href="<%= reservations_path %>" >
             <p class="hover-underline-animation norm"><i style="margin-right:5px;" class="fas fa-calendar"></i>Reservations</p>
           </a>

@@ -1,5 +1,7 @@
 <% property = reservation.property %>
+<% user = reservation.user %>
 <div style="    padding: 20px;
+    box-shadow: rgb(0 0 0 / 15%) 0px 2.5px 7.5px;
     border-radius: 10px;margin-top:20px;">
   <div style="display: flex;
     align-items: center;
@@ -7,18 +9,30 @@
     <div style="    display: flex;
     align-items: center;
     justify-content: center;gap:10px;">
-      <div class="" style="text-decoration: none;
+      <a class="hover-underline-animation norm user" style="text-decoration: none;
+    color: black;display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7.5px;" href="" >
+        <% if user.avatar.attached? %>
+          <%= cl_image_tag user.avatar.key, :gravity=>"face", :crop=>"fill", :height=>150, :width=>150, :quality=>"auto", style:"width:40px;height:40px;border-radius:500px;" %>
+        <% else %>
+          <img src="/help_avatar.png" style="width:40px;height:40px;border-radius:500px;" alt="">
+        <% end %>
+        <p  style="font-size:18px;margin-bottom:0;"><%= user.first_name %></p>
+      </a>
+    </div>
+    <div style="    display: flex;
+    align-items: center;
+    justify-content: center;gap:10px;">
+      <a class="hover-underline-animation norm user" style="text-decoration: none;
     color: black;display: flex;
     align-items: center;
     justify-content: center;
     gap: 7.5px;" href="<%= property_path(reservation.property) %>" >
-        <% if reservation.user.avatar.attached? %>
-          <%= cl_image_tag reservation.user.avatar.key, :gravity=>"face", :crop=>"fill", :height=>500, :width=>500, :quality=>"auto", style:"width:60px;height:60px;border-radius:500px;box-shadow: rgba(0, 0, 0, 0.15) 0px 2.5px 7.px;" %>
-        <% else %>
-          <img src="/help_avatar.png" style="width:60px;height:60px;border-radius:500px;" alt="">
-        <% end %>
-        <p  style="font-size:18px;margin-bottom:0;"><%= reservation.user.first_name %></p>
-      </div>
+        <%= cl_image_tag property.main_photo.key, :crop=>"fill", :quality=>"auto", style:"width:40px;height:40px;border-radius:500px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;" %>
+        <p  style="font-size:18px;margin-bottom:0;"><%= reservation.property.name %></p>
+      </a>
     </div>
     <div class="">
       <p style="margin-bottom:0;">

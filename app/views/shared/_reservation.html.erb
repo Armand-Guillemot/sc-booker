@@ -94,7 +94,7 @@
         <%= link_to '<i class="fas fa-calendar-plus"></i> Approve'.html_safe, approve_reservation_path(reservation), class:"btn btn-success", style:"display: block;margin-bottom: 5px;", data:{ disable_with: "Processing..." } %>
       <% end %>
       <% if current_user.admin || current_user == reservation.user %>
-        <%= link_to '<i class="fas fa-times"></i> Cancel'.html_safe, cancel_reservation_path(reservation), class:"btn btn-secondary", style:"width:100%;", data:{ confirm: "Are you sure?", disable_with: "Processing..." } %>
+        <%= link_to '<i class="fas fa-calendar-times"></i> Cancel'.html_safe, cancel_reservation_path(reservation), class:"btn btn-danger", style:"width:100%;", data:{ confirm: "Are you sure?", disable_with: "Processing..." } %>
       <% end %>
     </div>
   </div>
