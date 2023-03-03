@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :reservations
   resources :properties do
   end
-  devise_for :users
+  devise_for :users, controllers: { registrations: "user/registrations" }
   root to: 'pages#home'
   get '/admin', to: 'pages#admin', as: :admin
   get '/reservations/:id/cancel', to: 'reservations#cancel', as: :cancel_reservation
