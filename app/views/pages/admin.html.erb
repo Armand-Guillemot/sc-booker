@@ -9,7 +9,7 @@
    <div class="spacer-sm"></div>
 <div class="container">
 <% unless @reservations.present? %>
-    <p>There are no pending reservations, everything is up to date !</p>
+    <p style="color:#F2F2F2;text-align:center;">There are no pending reservations, everything is up to date !</p>
   <% end %>
   <% @reservations.each do |reservation| %>
     <%= render 'shared/admin_reservation', reservation: reservation%>

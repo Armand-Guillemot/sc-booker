@@ -4,8 +4,8 @@
   align-items:center;
   justify-content: flex-start;
   gap:7.5px;text-decoration:none;color:black;", :"data-turbolinks" => false do %>
-      <div class="btn btn-success"><i class="fas fa-house"></i></div>
-      <p style="margin-bottom:0;font-size: calc(1.275rem + 0.3vw);"><%= property.name %></p>
+      <div class="btn cta-secondary"><i class="fas fa-house"></i></div>
+      <p style="margin-bottom:0;font-size: calc(1.275rem + 0.3vw);color: rgb(73, 91, 115);"><%= property.name %></p>
     <% end %>
   </div>
   <div class="property-card-content" style="flex-wrap: wrap;
@@ -14,30 +14,31 @@
     <div class="">
       <p style="margin-bottom:0;">
         Available today?
-        <i style="<%= property.available_now ? 'color: #0d6efd;' : 'font-size: 19px;color: red;' %>"  class="fas fa-<%= property.available_now ? 'check' : 'times' %>"></i>
+        <i style="<%= property.available_now ? 'color: rgb(87, 111, 139);' : 'font-size: 19px;color: rgb(87, 111, 139);' %>"  class="fas fa-<%= property.available_now ? 'check' : 'times' %>"></i>
       </p>
       <p style="margin-bottom:0;">
         Reservable?
-        <i style="<%= property.reservable ? 'color: #0d6efd;' : 'font-size: 19px;color: red;' %>" class="fas fa-<%= property.reservable ? 'check' : 'times' %>"></i>
+        <i style="<%= property.reservable ? 'color: rgb(87, 111, 139);' : 'font-size: 19px;color: rgb(87, 111, 139);' %>" class="fas fa-<%= property.reservable ? 'check' : 'times' %>"></i>
       </p>
           <p style="margin-bottom:0;margin-top:10px">
-        <i class="fas fa-users"></i>
+        <i class="fas fa-users" style="color: rgb(73, 91, 115);"></i>
         <%= property.capacity %>
         Guests
       </p>
       <p style="margin-bottom:0;">
-        <i class="fas fa-bed"></i>
+        <i class="fas fa-bed" style="color: rgb(73, 91, 115);"></i>
         <%= property.bedrooms %>
         Bedrooms
       </p>
       <p style="margin-bottom:0;">
-        <i class="fas fa-bath"></i>
+        <i class="fas fa-bath" style="color: rgb(73, 91, 115);"></i>
         <%= property.bathrooms %>
         Bathrooms
       </p> 
     </div>
     <div class="">
       <div class="property-reservation-form" style="width:250px;box-shadow: rgba(0, 0, 0, 0.12) 0px 0px 2px, rgba(0, 0, 0, 0.24) 0px 0px 2px;">
+      <p>Fast booking</p>
         <%= render 'reservations/fast_form', reservation: Reservation.new(), property: property%>
       </div>
 

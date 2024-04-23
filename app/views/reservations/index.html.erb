@@ -10,7 +10,7 @@
    <div class="spacer-sm"></div>
 <div class="container">
   <% unless @reservations.where.not(status: 0).present? %>
-    <p>You don't have any pending or confirmed reservations. To make one, go to <a data-turbolinks="false" href="/properties">properties.</a></p>
+    <p style="text-align:center;color:white!important;">You don't have any pending or confirmed reservations. To make one, go to <a data-turbolinks="false" href="/properties" style="color:white;">properties.</a></p>
   <% end %>
     <% @reservations.where.not(status: 0).each do |reservation| %>
     <%= render 'shared/reservation', reservation: reservation%>

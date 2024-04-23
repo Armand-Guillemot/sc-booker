@@ -22,32 +22,32 @@
       </div> -->
       <div class="info-and-reservation">
         <div style="padding:20px;" class="info">
-          <h4 style="">About <%= @property.name %></h4>
+          <h4 style="color: rgb(73, 91, 115);">About <%= @property.name %></h4>
           <div class="spacer-sm"></div>
           <div style="display:inline-block;display: flex;margin: 0 auto;align-items: center;justify-content: flex-start;">
             <div class="show-property" style="">
               <p>
                 Available today?
-                <i style="<%= @property.available_now ? 'color: #0d6efd;' : 'font-size: 19px;color: red;' %>"  class="fas fa-<%= @property.available_now ? 'check' : 'times' %>"></i>
+                <i style="<%= @property.available_now ? 'color: rgb(73, 91, 115);' : 'font-size: 19px;color: rgb(73, 91, 115);' %>"  class="fas fa-<%= @property.available_now ? 'check' : 'times' %>"></i>
               </p>
               <p>
                 Reservable?
-                <i style="<%= @property.reservable ? 'color: #0d6efd;' : 'font-size: 19px;color: red;' %>" class="fas fa-<%= @property.reservable ? 'check' : 'times' %>"></i>
+                <i style="<%= @property.reservable ? 'color: rgb(73, 91, 115);' : 'font-size: 19px;color: rgb(73, 91, 115);' %>" class="fas fa-<%= @property.reservable ? 'check' : 'times' %>"></i>
               </p>
               <div class="spacer-sm">
               </div>
               <p>
-                <i class="fas fa-users"></i>
+                <i class="fas fa-users" style="color: rgb(73, 91, 115);"></i>
                 <%= @property.capacity %>
                 Guests
               </p>
               <p>
-                <i class="fas fa-bed"></i>
+                <i class="fas fa-bed" style="color: rgb(73, 91, 115);"></i>
                 <%= @property.bedrooms %>
                 Bedrooms
               </p>
               <p>
-                <i class="fas fa-bath"></i>
+                <i class="fas fa-bath" style="color: rgb(73, 91, 115);"></i>
                 <%= @property.bathrooms %>
                 Bathrooms
               </p>
