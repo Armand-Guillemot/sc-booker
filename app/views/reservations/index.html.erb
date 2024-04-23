@@ -1,11 +1,20 @@
-<div style="max-width:800px;margin:0 auto;">
-  <div class="spacer"></div>
-  <h1>Reservations</h1>
-  <div class="spacer-sm"></div>
+
+<div class=" page-container" style="">
+  <div class="flex-center">
+    <div class="page-title">
+      <h4 style="text-align: center;color:white;margin-bottom: 0;">Reservations</h4>
+      <hr style="margin-top:0;border-top: 2.5px solid;">
+    </div>
+  </div>
+</div>
+   <div class="spacer-sm"></div>
+<div class="container">
   <% unless @reservations.where.not(status: 0).present? %>
     <p>You don't have any pending or confirmed reservations. To make one, go to <a data-turbolinks="false" href="/properties">properties.</a></p>
   <% end %>
-  <% @reservations.where.not(status: 0).each do |reservation| %>
+    <% @reservations.where.not(status: 0).each do |reservation| %>
     <%= render 'shared/reservation', reservation: reservation%>
   <% end %>
 </div>
+
+<div class="spacer-sm"></div>

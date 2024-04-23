@@ -1,5 +1,11 @@
 <div class="form-container">
   <div class="form" style="padding:20px;">
+    <div class="flex-center">    
+      <div class="page-title">
+        <h4 style="text-align: center;color:white;margin-bottom: 0;">Edit Profile</h4>
+        <hr style="margin-top:0;border-top: 2.5px solid;">
+      </div>
+    </div>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= f.error_notification %>
       <div class="form-inputs">
@@ -10,13 +16,22 @@
         <%= f.input :first_name,
                 required: true,
                 input_html: { autocomplete: "first-name" }%>
-        <div class="">
-          <div class="awesom-title">
-            <i class="fas fa-image"></i>
-            <p style="margin:0;">Avatar</p>
-          </div>
-          <%= f.file_field :avatar, label: "Main photo" %>
-        </div>
+        <label style="margin-top:15px;font-size: 12px;" class="required" for="">Photo <abbr title="required">*</abbr></label>
+        <label class="btn cta-secondary" style="    width: 100%;
+    border-radius: 12.5px;
+    min-height: 38px;
+    margin-top: 0;margin-left:0;">
+          <p style="margin:0;margin-top:1px;">
+            <span id="upload-text">
+              <i class="fas fa-upload" style="margin-right: 5px;"></i>Click to add a photo !
+            </span>
+            <i id="check-icon" class="fas fa-check-circle" style="margin-left: 10px; display: none; color: white;"></i>
+          </p>
+          <span style="display:none;">
+            <%= f.file_field :avatar, id: 'avatar-upload' %>
+          </span>
+        </label>
+        <div class="spacer-sm"></div>
         <!--         <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
@@ -30,9 +45,11 @@
                 input_html: { autocomplete: "current-password" } %> -->
       </div>
       <div class="form-actions">
-        <%= f.button :submit, "Update",class:"btn btn-success",style:"float:right;" %>
+        <%= button_tag(type: 'submit', class: 'btn cta', style: 'float: right;') do %>
+          <i style="margin-right: 10px;" class="fas fa-save"></i> Save
+        <% end %>
       </div>
     <% end %>
-    <%= link_to '<i style="margin-right: 10px;" class="fas fa-caret-left"></i> Back'.html_safe, :back, class:"btn btn-secondary" %>
+    <%= link_to '<i style="margin-right: 10px;" class="fas fa-caret-left"></i> Back'.html_safe, :back, class:"btn cta-secondary" %>
   </div>
 </div>

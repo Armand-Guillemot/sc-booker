@@ -14,6 +14,27 @@
       </div>
       <%= f.input :name, label: false %>
     </div>
+        <div class="my-label">
+      <div class="awesom-title">
+        <i class="fas fa-users"></i>
+        <p style="margin:0;">Capacity</p>
+      </div>
+      <%= f.input :capacity, label: false %>
+    </div>
+            <div class="my-label">
+      <div class="awesom-title">
+        <i class="fas fa-bed"></i>
+        <p style="margin:0;">Bedrooms</p>
+      </div>
+      <%= f.input :bedrooms, label: false %>
+    </div>
+            <div class="my-label">
+      <div class="awesom-title">
+        <i class="fas fa-bath"></i>
+        <p style="margin:0;">Bathrooms</p>
+      </div>
+      <%= f.input :bathrooms, label: false %>
+    </div>
     <!--     <div class="my-label">
       <div class="awesom-title">
         <i class="fas fa-list"></i>
@@ -35,6 +56,7 @@
     </div>
   </div>
   <div class="form-actions">
-    <%= f.button :submit, class:"btn btn-success", style:"float: right;", data:{ disable_with: "Processing..." } %>
+    <%= f.button :submit, class:"btn cta", style:"float: right;", data:{ disable_with: "Processing..." } %>
   </div>
 <% end %>
+

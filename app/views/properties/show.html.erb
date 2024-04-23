@@ -1,14 +1,17 @@
 <div class="container" style="padding-top:20px;padding-bottom:20px;">
+<div class="spacer-sm"></div>
   <div style="max-width:800px;margin:0 auto;">
     <div style="  display:flex;
   align-items:center;
   justify-content: space-between;
   gap:7.5px;">
-      <%= link_to '<i class="fas fa-caret-left" style="margin-right:5px;"></i> Back'.html_safe, properties_path, class:"btn btn-secondary", :"data-turbolinks" => false %>
-      <h2 class="" style="text-align:center;">
-        <%= @property.name %>
-      </h2>
-      <%= link_to '<i class="fas fa-edit" style="margin-right:5px;"></i> Edit'.html_safe, edit_property_path(@property), class:"btn btn-success", style:"#{'opacity: 0;  pointer-events: none;cursor: default;text-decoration: none;color: black;' unless current_user.admin}" %>
+      <%= link_to '<i class="fas fa-caret-left" style="margin-right:5px;"></i> Back'.html_safe, properties_path, class:"btn cta-secondary", :"data-turbolinks" => false %>
+
+           <div class="page-title">
+      <h4 style="text-align: center;color:white;margin-bottom:0;"><%= @property.name %></h4>
+      <hr style="margin-top:0px;border-top: 2.5px solid;">
+    </div>
+      <%= link_to '<i class="fas fa-edit" style="margin-right:5px;"></i> Edit'.html_safe, edit_property_path(@property), class:"btn cta", style:"#{'opacity: 0;  pointer-events: none;cursor: default;text-decoration: none;color: black;' unless current_user.admin}" %>
     </div>
     <div class="spacer"></div>
     <%= render 'shared/property_calendar', property: @property %>

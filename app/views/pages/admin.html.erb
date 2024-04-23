@@ -1,11 +1,19 @@
-<div style="max-width:800px;margin:0 auto;">
-  <div class="spacer"></div>
-  <h1><i style="margin-right:10px;" class="fas fa-vote-yea"></i>Admin</h1>
-  <div class="spacer-sm"></div>
-  <% unless @reservations.present? %>
+<div class=" page-container" style="">
+  <div class="flex-center">
+    <div class="page-title">
+      <h4 style="text-align: center;color:white;margin-bottom: 0;">Admin</h4>
+      <hr style="margin-top:0;border-top: 2.5px solid;">
+    </div>
+  </div>
+</div>
+   <div class="spacer-sm"></div>
+<div class="container">
+<% unless @reservations.present? %>
     <p>There are no pending reservations, everything is up to date !</p>
   <% end %>
   <% @reservations.each do |reservation| %>
     <%= render 'shared/admin_reservation', reservation: reservation%>
   <% end %>
 </div>
+
+<div class="spacer-sm"></div>
