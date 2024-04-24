@@ -16,3 +16,5 @@ require("flatpickr/dist/flatpickr.css")
 
 // Manually register Flatpickr as a stimulus controller
 application.register('flatpickr', Flatpickr)
+
+import rangePlugin from 'flatpickr/dist/plugins/rangePlugin.js'

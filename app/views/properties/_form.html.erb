@@ -54,6 +54,18 @@
       <% end %>
       <%= f.file_field :main_photo, label: "Main photo" %>
     </div>
+        <div class="">
+      <div class="awesom-title">
+        <i class="fas fa-images"></i>
+        <p style="margin:0;">Other photos</p>
+      </div>
+      <% if @property.photos.attached? %>
+        <div style="max-width:800px;" class="">
+          <%= render "shared/carousel", property: @property %>
+        </div>
+      <% end %>
+      <%= f.file_field :photos, multiple: true, label: "Other photos" %>
+    </div>
   </div>
   <div class="form-actions">
     <%= f.button :submit, class:"btn cta", style:"float: right;", data:{ disable_with: "Processing..." } %>

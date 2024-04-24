@@ -2,20 +2,22 @@
   <% if reservations.present? %>
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
       <p style="
+  
     margin: 0;
     display: inline-block;
-    padding: 2.5px 5px;
+    padding: 1.5px 5px;
     border-radius: 5px;
-    <%= 'background: rgb(87, 111, 139)!important;color: white!important;' if date == Date.today %>"><%= date.day %></p>
+    <%= 'background: rgb(87, 111, 139)!important;color: white!important;border: 1px solid white;' if date == Date.today %>"><%= date.day %></p>
       <%= cl_image_tag reservations.first.property.main_photo.key, :crop=>"fill", :quality=>"auto", style:"width:20px;height:20px;border-radius:500px;" %>
     </div>
   <% else %>
     <p style="
+   
     margin: 0;
     display: inline-block;
-    padding: 2.5px 5px;
+    padding: 1.5px 5px;
     border-radius: 5px;
-    <%= 'background: rgb(87, 111, 139)!important;color: white!important;' if date == Date.today %>"><%= date.day %></p>
+    <%= 'background: rgb(87, 111, 139)!important;color: white!important;border: 1px solid white;' if date == Date.today %>"><%= date.day %></p>
   <% end %>
   <% reservations.each do |reservation| %>
     <p style="font-size:.75rem;margin-bottom:0;text-overflow: ellipsis;

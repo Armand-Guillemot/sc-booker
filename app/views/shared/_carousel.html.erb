@@ -1,9 +1,8 @@
 <div class="glider-contain" style="
 margin: 0 auto;">
-  <div class="glider" style="margin: 0 auto;">
+  <div class="glider" style="margin: 0 auto;border-radius: 20px 20px 0 0 ;">
     <% property.photos.each do |photo| %>
       <%= cl_image_tag photo.key, :crop=>"fill", :quality=>"auto" %>
     <% end %>
   </div>
-  <div role="tablist" id="dots"></div>
 </div>

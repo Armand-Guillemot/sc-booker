@@ -65,9 +65,23 @@ body {
   min-height: 100vh;
   min-height: calc(calc(var(--vh, 1vh) * 100) - var(--footer));
 }
+.form-check-input.is-valid:checked {
+  background-color: #576f8b!important;
+}
+.form-check-input.is-valid:focus {
+  box-shadow: none!important;
+}
+input.is-valid {
+  border-color: white!important;
+}
 
-
-
+.form-check-input:checked {
+  background-color: #576f8b!important;
+  border-color: white!important;
+}
+.form-check-input:focus {
+  box-shadow: none!important;
+}
 
 
 .show-property {
@@ -91,9 +105,9 @@ body {
   align-items: flex-start;
   justify-content: center;
   gap: 5%;
-  padding: 15px;
+  padding: 30px;
   background: white;
-  border-radius: 10px;
+  border-radius: 0 0 20px 20px;
 
   >* {
     width: 47.5%;
@@ -103,7 +117,7 @@ body {
 .property-reservation-form {
   background: rgb(87, 111, 139);
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 20px;
   color: rgb(242, 242, 242) !important;
 
@@ -116,7 +130,10 @@ body {
   }
 }
 
+.glider::-webkit-scrollbar {
 
+  height: 0!important;
+}
 
 @media only screen and (max-width: 550px) {
   .info-and-reservation {
@@ -126,7 +143,7 @@ body {
     gap: 5%;
     padding: 15px;
     background: white;
-    border-radius: 10px;
+    border-radius: 0 0 20px 20px;
     flex-direction: column;
     gap: 10%;
 
@@ -151,6 +168,7 @@ body {
     border: none;
     text-align: center;
     color: rgb(73, 91, 115);
+    background-color: white;
   }
 
   table {
@@ -158,8 +176,10 @@ body {
     table-layout: fixed;
     border-radius: 20px;
     overflow: hidden;
-    background: white;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    background: #576f8b;
+    border: 1px solid #576f8b;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    
   }
 
   .day {
@@ -168,6 +188,7 @@ body {
     overflow: hidden;
     border: 1px solid rgb(73, 91, 115);
     color: rgb(73, 91, 115);
+    background-color: white;
   }
 
   .has-events {
@@ -190,7 +211,7 @@ body {
   .wday-6 {}
 
   .today {
-    background: transparent
+    background: white;
   }
 
   .past {}
@@ -461,7 +482,7 @@ a:hover.hover-underline-animation>p:after {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: calc(20px + 3vw);
   margin-right: 35px;
 }
 
@@ -476,7 +497,7 @@ a:hover.hover-underline-animation>p:after {
 
   p {
     margin: 0;
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .cta {
@@ -491,7 +512,7 @@ a:hover.hover-underline-animation>p:after {
   display: none;
 }
 
-@media (max-width:500px) {
+@media (max-width:650px) {
   .nav>.nav-btn {
     display: inline-block;
     position: absolute;

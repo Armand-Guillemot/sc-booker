@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -68,5 +69,87 @@
     // Initial call to set the heights
     setLayoutHeights();
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
+    <script>
+      new Glider(document.querySelector('.glider'), {
+
+      // `auto` allows automatic responsive
+      // width calculations
+      slidesToScroll: 1,
+      slidesToShow: 1,
+
+
+
+      // should have been named `itemMinWidth`
+      // slides grow to fit the container viewport
+      // ignored unless `slidesToShow` is set to `auto`
+
+
+
+
+
+
+      // if true, slides wont be resized to fit viewport
+      // requires `itemWidth` to be set
+      // * this may cause fractional slides
+      exactWidth: false,
+
+      // speed aggravator - higher is slower
+      duration: 1,
+
+      // dot container element or selector
+      dots: '#dots',
+
+
+      // allow mouse dragging
+      draggable: true,
+      // how much to scroll with each mouse delta
+      dragVelocity: 1,
+
+      // use any custom easing function
+      // compatible with most easing plugins
+      easing: function (x, t, b, c, d) {
+        return c*(t/=d)*t + b;
+      },
+
+      // event control
+      scrollPropagate: true,
+      eventPropagate: true,
+
+      // Force centering slide after scroll event
+      scrollLock: true,
+      // how long to wait after scroll event before locking
+      // if too low, it might interrupt normal scrolling
+      scrollLockDelay: 0,
+
+      // Force centering slide after resize event
+      resizeLock: true,
+      responsive: [
+    {
+      // screens greater than >= 775px
+      breakpoint: 775,
+      settings: {
+        // Set to `auto` and provide item width to adjust to viewport
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        itemWidth: 150,
+        duration: 0.25
+      }
+    },{
+      // screens greater than >= 1024px
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        itemWidth: 150,
+        duration: 0.25
+      }
+    }
+  ],
+
+      // Glider.js breakpoints are mobile-first
+
+      });
+    </script>
 </body>
 </html>
