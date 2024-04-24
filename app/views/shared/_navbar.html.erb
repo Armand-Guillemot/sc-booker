@@ -9,7 +9,6 @@
     <% else %>
       <img src="/help_avatar.png" style="width:35px;height:35px;border-radius:500px;box-shadow: rgba(255, 255, 255, 1) 0px 0 5.5px;" alt="">
     <% end %>
-    
   </a>
   <input type="checkbox" id="nav-check">
   <div class="nav-btn">
@@ -25,6 +24,11 @@
         class="line bottom"
         d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40" />
             </svg>
+            <% if Reservation.where(status: 1).count > 0 %>
+              <span class="badge-mobile">
+                <p style="margin:0;"><%= Reservation.where(status: 1).count %></p>
+              </span>
+            <% end %>
           </label>
         </div>
         <div class="nav-links">
@@ -32,8 +36,18 @@
             <p class="hover-underline-animation norm"><i style="margin-right:5px;" class="fas fa-tachometer-alt"></i>Dashboard</p>
           </a>
           <% if current_user && current_user.admin %>
-            <a  class="" href="<%= admin_path %>" >
-              <p class="hover-underline-animation norm"><i style="margin-right:5px;" class="fas fa-vote-yea"></i>Admin</p>
+            <a class="" href="<%= admin_path %>" >
+              <% if Reservation.where(status: 1).count > 0 %>
+                <span class="badge">
+                  <p style="margin: 0;
+    font-size: 10px;
+    margin-top: 1px;
+   "><%= Reservation.where(status: 1).count %></p>
+                </span>
+              <% end %>
+              <p class="hover-underline-animation norm">
+                <i style="margin-right:5px;" class="fas fa-vote-yea"></i>Admin
+              </p>
             </a>
           <% end %>
           <a  class="" href="<%= reservations_path %>" >
@@ -50,3 +64,29 @@
           <% end %>
         </div>
       </div>
+      <style>
+        .badge, .badge-mobile {
+            height: 17px !important;
+            width: 17px !important;
+            border: none !important;
+            background-color: red;
+            color: white;
+            font-size: 0.75em;
+            padding: 0;
+            border-radius: 50%;
+            position: relative;
+            top: -1px;
+            right: -2px;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            z-index: 10;
+        }
+        
+        .badge-mobile {
+          position: absolute;
+          right: 5px;
+          top: 8px;
+        }
+      </style>
