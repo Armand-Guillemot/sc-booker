@@ -71,13 +71,13 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
     <script>
-      new Glider(document.querySelector('.glider'), {
+      const glider = new Glider(document.querySelector('.glider'), {
 
       // `auto` allows automatic responsive
       // width calculations
-      slidesToScroll: "auto",
+      slidesToScroll: 1,
       slidesToShow: "auto",
-
+      itemWidth: 150,
 
 
       // should have been named `itemMinWidth`
@@ -124,11 +124,38 @@
 
       // Force centering slide after resize event
       resizeLock: true,
+      rewind: true,
      
 
       // Glider.js breakpoints are mobile-first
 
       });
+      function sliderAuto(slider, miliseconds) {
+ const slidesCount = slider.track.childElementCount;
+ let slideTimeout = null;
+ let nextIndex = 1;
+
+ function slide () {
+   slideTimeout = setTimeout(
+     function () {
+       if (nextIndex >= slidesCount ) {
+         nextIndex = 0;
+       }
+       slider.scrollItem(nextIndex++);
+     },
+     miliseconds
+   );
+ }
+
+ slider.ele.addEventListener('glider-animated', function() {
+   window.clearInterval(slideTimeout);
+   slide();
+ });
+
+ slide();
+}
+
+sliderAuto(glider, 4000)
     </script>
 </body>
 </html>
