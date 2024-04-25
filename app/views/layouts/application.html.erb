@@ -75,9 +75,10 @@
 
       // `auto` allows automatic responsive
       // width calculations
+      slidesToShow: 1,
       slidesToScroll: 1,
-      slidesToShow: "auto",
-      itemWidth: 150,
+
+    exactWidth: false,
 
 
       // should have been named `itemMinWidth`
@@ -92,7 +93,7 @@
       // if true, slides wont be resized to fit viewport
       // requires `itemWidth` to be set
       // * this may cause fractional slides
-      exactWidth: false,
+ 
 
       // speed aggravator - higher is slower
       duration: 1,
@@ -155,7 +156,7 @@
  slide();
 }
 
-sliderAuto(glider, 4000)
+sliderAuto(glider, 5000)
     </script>
 </body>
 </html>

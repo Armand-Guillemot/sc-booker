@@ -1,8 +1,19 @@
-<div class="glider-contain" style="
-margin: 0 auto;">
-  <div class="glider" style="margin: 0 auto;border-radius: 20px 20px 0 0 ;">
-    <% property.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, :crop=>"fill", :quality=>"auto" %>
+<!-- Updated HTML for your image carousel -->
+<div class="glider-contain" style="margin: 0 auto;">
+  <div class="glider" style="margin: 0 auto; border-radius: 20px 20px 0 0;">
+    <% property.photos.sample(5).each do |photo| %>
+      <div class="carou-item" style="background-image: url('<%= cl_image_path photo.key, quality: 'auto' %>');"></div>
     <% end %>
   </div>
 </div>
+
+<!-- Style tag in your HTML to style the images -->
+<style>
+  .carou-item {
+    height: calc(250px + 15vw) !important;
+    max-height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+</style>

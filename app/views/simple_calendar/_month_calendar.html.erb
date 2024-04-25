@@ -1,17 +1,10 @@
 <div class="simple-calendar">
   <div class="calendar-heading" style="gap:0px;">
-    <%= link_to t('simple_calendar.previous', default: '<i class="fas fa-caret-left"></i>'.html_safe), calendar.url_for_previous_view, style:"padding: 5px 25px 5px 14px;
-    background: white;
-    border-radius: 50px 0 0 50px;
-    color: #576f8b !important;" %>
-    <span class="calendar-title" style="    padding: 5px 7.5px;
-    background: white;
-    font-weight: 600;
-    color: #495b73;"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
-    <%= link_to t('simple_calendar.next', default: '<i class="fas fa-caret-right"></i>'.html_safe), calendar.url_for_next_view, style:"padding: 5px 14px 5px 25px;
-    background: white;
-    border-radius: 0 50px 50px 0;
-    color: #576f8b !important;" %>
+    <%= link_to t('simple_calendar.previous', default: '<i class="fas fa-caret-left"></i>'.html_safe), calendar.url_for_previous_view, style: "padding: 5px 25px 5px 14px; background: white; border-radius: 50px 0 0 50px; color: #576f8b !important;", data: { turbolinks: false } %>
+    <span class="calendar-title" style="padding: 5px 7.5px; background: white; font-weight: 600; color: #495b73;">
+      <%= t('date.month_names')[start_date.month] %> <%= start_date.year %>
+    </span>
+    <%= link_to t('simple_calendar.next', default: '<i class="fas fa-caret-right"></i>'.html_safe), calendar.url_for_next_view, style: "padding: 5px 14px 5px 25px; background: white; border-radius: 0 50px 50px 0; color: #576f8b !important;", data: { turbolinks: false } %>
   </div>
   <table class="table">
     <thead>
@@ -38,6 +31,4 @@
     </tbody>
   </table>
 </div>
-
-<script>
-</script>
+<script></script>
