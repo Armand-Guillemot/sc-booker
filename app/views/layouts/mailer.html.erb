@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <style>
-      /* Email styles need to be inline */
-    </style>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <title><%= yield :subject %></title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px; color: #333;">
+  <div style="max-width: 600px; margin: auto; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+    
+    <div style="background-color: #576f8b; padding: 10px 20px;">
+    </div>
 
-  <body>
-    <%= yield %>
-  </body>
+    <div style="padding: 20px;">
+      <%= yield %>
+    </div>
+
+    <div style="background-color: #f1f1f1; padding: 10px 20px; text-align: center; font-size: 12px; color: #777;">
+      SCBooker • All rights reserved
+    </div>
+  </div>
+</body>
 </html>

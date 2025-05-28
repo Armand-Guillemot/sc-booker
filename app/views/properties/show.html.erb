@@ -35,29 +35,13 @@
                 Reservable?
                 <i style="<%= @property.reservable ? 'color: rgb(73, 91, 115);' : 'font-size: 19px;color: rgb(73, 91, 115);' %>" class="fas fa-<%= @property.reservable ? 'check' : 'times' %>"></i>
               </p>
-              <div class="spacer-sm">
-              </div>
-              <p>
-                <i class="fas fa-users" style="color: rgb(73, 91, 115);"></i>
-                <%= @property.capacity %>
-                Guests
-              </p>
-              <p>
-                <i class="fas fa-bed" style="color: rgb(73, 91, 115);"></i>
-                <%= @property.bedrooms %>
-                Bedrooms
-              </p>
-              <p>
-                <i class="fas fa-bath" style="color: rgb(73, 91, 115);"></i>
-                <%= @property.bathrooms %>
-                Bathrooms
-              </p>
+              
             </div>
           </div>
         </div>
         <div class="property-reservation-form">
           <h4>Book now !</h4>
-          <%= render 'reservations/form', reservation: Reservation.new(), property: @property%>
+          <%= render 'reservations/fast_form', reservation: Reservation.new(), property: @property%>
         </div>
       </div>
     </div>

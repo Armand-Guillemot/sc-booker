@@ -1,0 +1,7 @@
+<% content_for :subject, "✅ Reservation Approved: #{@property.name}" %>
+
+<h2><i class="fas fa-check-circle"></i> Your Reservation is Approved</h2>
+<p>Hi <%= @user.first_name %>,</p>
+<p>Your reservation for <strong><%= @property.name %></strong> from <%= @reservation.start_date.strftime("%B %d, %Y") %> to <%= @reservation.end_date.strftime("%B %d, %Y") %> has been approved.</p>
+
+<p>We look forward to your stay!</p>

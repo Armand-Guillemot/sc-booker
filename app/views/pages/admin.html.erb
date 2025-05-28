@@ -1,3 +1,4 @@
+
 <div class=" page-container" style="">
   <div class="flex-center">
     <div class="page-title">
@@ -7,11 +8,11 @@
   </div>
 </div>
    <div class="spacer-sm"></div>
-<div class="container">
-<% unless @reservations.present? %>
-    <p style="color:#F2F2F2;text-align:center;">There are no pending reservations, everything is up to date !</p>
+<div class="container" style="max-width: 800px;">
+  <% unless @reservations.present? %>
+     <p style="color:#F2F2F2;text-align:center;">There are no pending reservations, everything is up to date !</p>
   <% end %>
-  <% @reservations.each do |reservation| %>
+    <% @reservations.each do |reservation| %>
     <%= render 'shared/admin_reservation', reservation: reservation%>
   <% end %>
 </div>

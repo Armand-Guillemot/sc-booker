@@ -1,0 +1,57 @@
+<div class="property-card-2">
+
+    <div class="upper-card">
+ <%= cl_image_tag property.main_photo.key, :crop=>"fill", :quality=>"auto", style:"width:150px;height:150px;border-radius:15px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;" %>
+        <div class="upper-card-title-form" style="">
+            <div class="upper-card-title">
+                <h4 style="font-size: calc(1.3rem + 0.3vw);margin:0;text-align:center;"><%= property.name %></h4>
+                <p style="margin:0;font-size:10px;font-weight:100;text-align:center;">Disponible</p>
+            </div>
+  
+            <div class="upper-card-form">
+                <%= render 'reservations/fast_form', reservation: Reservation.new(), property: property%>
+            </div>
+        </div>
+
+    </div>
+    <div class="middle-card">
+
+    </div>
+    <div class="lower-card">
+        <%= render 'shared/week_property_calendar', property: property%>
+    </div>
+
+</div>
+
+<style>
+.property-card-2 .table > thead {
+    display: none;
+}
+.property-card-2 input {
+    font-size: .5rem;
+}
+.property-card-2 .form-inputs > * {
+    margin: 0;
+}
+.property-card-2 {
+    background: white;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius:10px;
+}
+.upper-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.upper-card-title {
+    margin-bottom:10px;
+}
+</style>

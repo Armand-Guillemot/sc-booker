@@ -1,6 +1,7 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: %i[ show edit update destroy cancel approve]
   after_action :days, only: [:create, :update]
+  after_action :send_notification, only: [:create]
   after_action :check_admin, only: [:create, :update]
   # GET /reservations or /reservations.json
   def index
@@ -22,12 +23,15 @@ class ReservationsController < ApplicationController
 
   def cancel
     @reservation.update(status:0)
+    UserMailer.declined_reservation(@reservation).deliver_now
     redirect_back fallback_location: reservations_path, notice: "Your reservation was successfully cancelled."
   end
 
   def approve
     @reservation.update(status:2)
+    UserMailer.approved_reservation(@reservation).deliver_now
     redirect_back fallback_location: reservations_path, notice: "The reservation was successfully approved."
+
   end
 
   # POST /reservations or /reservations.json
@@ -71,6 +75,9 @@ class ReservationsController < ApplicationController
   private
   def days
     @reservation.update(days: (@reservation.end_date - @reservation.start_date)/1.day)
+  end
+  def send_notification
+    UserMailer.new_reservation(@reservation).deliver_now unless @reservation.user.admin
   end
   def check_admin
     @reservation.update(status: 2) if @reservation.user.admin

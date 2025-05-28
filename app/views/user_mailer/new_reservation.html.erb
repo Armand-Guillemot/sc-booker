@@ -1,0 +1,7 @@
+<h2><i class="fas fa-bell"></i>Reservation Request</h2>
+<p><strong>User:</strong> <%= @user.first_name %> (<%= @user.email %>)</p>
+<p><strong>Property:</strong> <%= @property.name %></p>
+<p><strong>Dates:</strong> <%= @reservation.start_date.strftime("%B %d, %Y") %> → <%= @reservation.end_date.strftime("%B %d, %Y") %></p>
+<p style="margin-top: 20px;">
+  To manage this reservation, you can <a href="https://sc-booker.herokuapp.com/admin" style="color: #576f8b; text-decoration: none;"><strong>approve or decline the request</strong></a> from your admin dashboard.
+</p>

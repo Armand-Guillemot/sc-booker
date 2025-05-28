@@ -1,0 +1,7 @@
+<% content_for :subject, "❌ Reservation Declined: #{@property.name}" %>
+
+<h2><i class="fas fa-times-circle"></i> Reservation Declined</h2>
+<p>Hi <%= @user.first_name %>,</p>
+<p>Unfortunately, your reservation for <strong><%= @property.name %></strong> from <%= @reservation.start_date.strftime("%B %d, %Y") %> to <%= @reservation.end_date.strftime("%B %d, %Y") %> has been declined.</p>
+
+<p>You may explore other available properties on SCBooker.</p>
