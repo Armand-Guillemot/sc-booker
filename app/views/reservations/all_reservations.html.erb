@@ -1,0 +1,19 @@
+<div class=" page-container" style="">
+  <div class="flex-center">
+    <div class="page-title">
+      <h4 style="text-align: center;color:white;margin-bottom: 0;">Admin</h4>
+      <hr style="margin-top:0;border-top: 2.5px solid;">
+    </div>
+  </div>
+</div>
+   <div class="spacer-sm"></div>
+<div class="container" style="max-width: 800px;">
+  <% unless @reservations.present? %>
+     <p style="color:#F2F2F2;text-align:center;">Are you even allowed to be here ?!</p>
+  <% end %>
+    <% @reservations.each do |reservation| %>
+    <%= render 'shared/admin_reservation', reservation: reservation%>
+  <% end %>
+</div>
+
+<div class="spacer-sm"></div>

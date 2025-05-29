@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :reservations
+  get '/all_reservations', to: 'reservations#all_reservations'
   resources :properties do
   end
   devise_for :users, controllers: { registrations: "user/registrations" }

@@ -8,6 +8,11 @@ class ReservationsController < ApplicationController
     @reservations = Reservation.where(user: current_user).order(start_date: :desc)
   end
 
+  def all_reservations
+    @reservations
+    @reservations = Reservation.all if current_user.maintenance == true
+  end
+
   # GET /reservations/1 or /reservations/1.json
   def show
   end
