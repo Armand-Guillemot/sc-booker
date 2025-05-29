@@ -1,16 +1,11 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: %i[ show edit update destroy cancel approve]
-  after_action :days, only: [:create, :update]
-  after_action :send_notification, only: [:create]
-  after_action :check_admin, only: [:create, :update]
+  after_action :set_reservation_days, only: [:create, :update]
+  after_action :send_new_reservation_notification, only: [:create]
+  after_action :admin_auto_approve, only: [:create, :update]
   # GET /reservations or /reservations.json
   def index
     @reservations = Reservation.where(user: current_user).order(start_date: :desc)
-  end
-
-  def all_reservations
-    @reservations = []
-    @reservations = Reservation.all if current_user.maintenance == true
   end
 
   # GET /reservations/1 or /reservations/1.json
@@ -78,13 +73,13 @@ class ReservationsController < ApplicationController
   end
 
   private
-  def days
+  def set_reservation_days
     @reservation.update(days: (@reservation.end_date - @reservation.start_date)/1.day)
   end
-  def send_notification
+  def send_new_reservation_notification
     UserMailer.new_reservation(@reservation).deliver_now unless @reservation.user.admin
   end
-  def check_admin
+  def admin_auto_approve
     @reservation.update(status: 2) if @reservation.user.admin
   end
   # Use callbacks to share common setup or constraints between actions.

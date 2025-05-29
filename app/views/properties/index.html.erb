@@ -23,7 +23,7 @@
           </div>
           <%= submit_tag "Search", id:"search-sub", style:"display:none;" %>
         </div>
-        <%= link_to '<i class="fas fa-plus" style="margin-right:5px;"></i> New'.html_safe, new_property_path, class:"btn cta", style:"#{'opacity: 0;  pointer-events: none;cursor: default;text-decoration: none;color: black;' unless current_user.admin}" %>
+        <%= link_to '<i class="fas fa-plus" style="margin-right:5px;"></i> New'.html_safe, new_property_path, class:"btn cta", style:"#{'opacity: 0;  pointer-events: none;cursor: default;text-decoration: none;color: black;' unless current_user.maintenance}" %>
       </div>
     <% end %>
     <div class="spacer"></div>

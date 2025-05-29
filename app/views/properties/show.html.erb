@@ -11,7 +11,7 @@
       <h4 style="text-align: center;color:white;margin-bottom:0;"><%= @property.name %></h4>
       <hr style="margin-top:0px;border-top: 2.5px solid;">
     </div>
-      <%= link_to '<i class="fas fa-edit" style="margin-right:5px;"></i> Edit'.html_safe, edit_property_path(@property), class:"btn cta", style:"#{'opacity: 0;  pointer-events: none;cursor: default;text-decoration: none;color: black;' unless current_user.admin}" %>
+      <%= link_to '<i class="fas fa-edit" style="margin-right:5px;"></i> Edit'.html_safe, edit_property_path(@property), class:"btn cta", style:"#{'opacity: 0;  pointer-events: none;cursor: default;text-decoration: none;color: black;' unless current_user.maintenance}" %>
     </div>
  
     <%= render 'shared/property_calendar', property: @property %>
