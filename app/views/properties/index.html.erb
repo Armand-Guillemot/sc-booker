@@ -1,4 +1,4 @@
-<div class="container" style="padding-top:20px;padding-bottom:20px;">
+<div class="" style="padding-top:20px;padding-bottom:20px;">
   <div id="search-results" style="max-width:800px;margin:0 auto;">
     <div class="spacer-sm"></div>
     <div class="flex-center">     
@@ -27,7 +27,11 @@
       </div>
     <% end %>
     <div class="spacer"></div>
-    <div id="blogpost-table">
+    <div id="blogpost-table" style="display: flex
+;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;">
       <% @properties.all.each do |property| %>
         <%= render 'shared/property', property: property%>
 

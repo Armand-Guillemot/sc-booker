@@ -1,36 +1,39 @@
-<div class="property-card">
-  <div style="gap: 10px;display:flex;align-items:center;justify-content:flex-start;gap: 10px;margin-bottom:10px;">
-    <%= link_to property_path(property), class:"hover-underline-animation norm user", style:"  display:flex;
-  align-items:center;
-  justify-content: flex-start;
-  gap:20px;text-decoration:none;color:black;", :"data-turbolinks" => false do %>
-      <div class="btn cta-secondary"><i class="fas fa-house"></i></div>
-      <h2 style="margin-bottom:0;font-size: calc(1.275rem + 0.3vw);color:white;"><%= property.name %></h2>
-    <% end %>
-  </div>
-  <div class="property-card-content" style="flex-wrap: wrap;
+<div class="property-card" style="">
+
+    <div class="property-card-content" style="
     gap: 20px;">
-    <%= cl_image_tag property.main_photo.key, :crop=>"fill", :quality=>"auto", style:"width:150px;height:150px;border-radius:20px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;" %>
-    <div class="">
-      <p style="margin-bottom:0;">
-        Available today?
-        <i style="<%= property.available_now ? 'color: white;' : 'font-size: 19px;color: white;' %>"  class="fas fa-<%= property.available_now ? 'check' : 'times' %>"></i>
-      </p>
-      <p style="margin-bottom:0;">
-        Reservable?
-        <i style="<%= property.reservable ? 'color: white;' : 'font-size: 19px;color: white;' %>" class="fas fa-<%= property.reservable ? 'check' : 'times' %>"></i>
-      </p>
+        <div style="gap: 20px;display:flex;align-items:flex-start;justify-content:flex-start;margin-bottom:0px;flex-direction:column;padding:15px;    align-self: flex-start;">
+            <%= link_to property_path(property), class:"hover-underline-animation norm user", style:"  display:flex;align-items:center;justify-content: flex-start;gap:20px;text-decoration:none;color:black;", :"data-turbolinks" => false do %>
+            <div class="btn cta-secondary"><i class="fas fa-house"></i></div>
+            <h2 style="margin-bottom:0;font-size: calc(1.275rem + 0.3vw);color:white;white-space: nowrap;"><%= property.name %></h2>
 
-    </div>
-    <div class="">
-      <div class="property-reservation-form" style="width:250px;box-shadow: rgba(0, 0, 0, 0.12) 0px 0px 2px, rgba(0, 0, 0, 0.24) 0px 0px 2px;">
-      <p>Fast booking</p>
-        <%= render 'reservations/fast_form', reservation: Reservation.new(), property: property%>
-      </div>
+            <% end %>
+          <div class="t">
+            <p style="margin-bottom:5px;font-size:12px;">
+              Available today?
+              <i style="<%= property.available_now ? 'color: rgb(73, 91, 115);' : 'font-size: 19px;color: rgb(73, 91, 115);' %>"  class="fas fa-<%= property.available_now ? 'check' : 'times' %>"></i>
+            </p>
+            <p style="margin-bottom:0px;font-size:12px;">
+              Reservable?
+              <i style="<%= property.reservable ? 'color: rgb(73, 91, 115);' : 'font-size: 19px;color: rgb(73, 91, 115);' %>" class="fas fa-<%= property.reservable ? 'check' : 'times' %>"></i>
+            </p>
 
+          </div>
+          <p style="margin-bottom:0px;font-size:10px;max-width: 350px;font-weight: 100;">
+            For more info click on the house icon, you will be redirected to the property page.
+           </p>
+        </div>
+
+
+        <div class="">
+            <div class="property-reservation-form" style="width:250px;box-shadow: rgba(0, 0, 0, 0.12) 0px 0px 2px, rgba(0, 0, 0, 0.24) 0px 0px 2px;">
+                <p>Fast booking</p>
+                <%= render 'reservations/fast_form', reservation: Reservation.new(), property: property%>
+            </div>
+
+        </div>
+        <%= cl_image_tag property.main_photo.key, :crop=>"fill", :quality=>"auto", style:"width:200px;height:200px;border-radius:20px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;" %>
     </div>
-  </div>
-  <div class="spacer-sm"></div>
-  <%= render 'shared/week_property_calendar', property: property%>
+    <div class="spacer-sm"></div>
+    <%= render 'shared/week_property_calendar', property: property%>
 </div>
-<div class="spacer"></div>

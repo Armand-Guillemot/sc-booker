@@ -350,6 +350,7 @@ input.is-valid {
   padding: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 10px;
+  margin:10px;
 
   .table>thead {
     display: none;
@@ -364,9 +365,67 @@ input.is-valid {
   }
 }
 
+// Media query for screens narrower than 750px
+@media (max-width: 749px) {
+  .property-card {
+    max-width: 380px;
+    .property-card-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-direction: column!important;
+      .property-reservation-form {
+        width: unset!important;
+      }
+      img {
+        width: 100%!important;
+        height: unset!important;
+      }
+
+    }
+    
+  }
+}
 
 
 
+.over-duo-stuff {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+
+
+.duo-stuff {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+  width: 50%;
+}
+
+// Media query for screens narrower than 750px
+@media (max-width: 749px) {
+  .over-duo-stuff {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 30px;
+    width: 100%;
+    flex-direction: column;
+  }
+  
+  
+  .duo-stuff {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+  }
+}
 
 
 
