@@ -9,7 +9,7 @@ class ReservationsController < ApplicationController
   end
 
   def all_reservations
-    @reservations
+    @reservations = []
     @reservations = Reservation.all if current_user.maintenance == true
   end
 
