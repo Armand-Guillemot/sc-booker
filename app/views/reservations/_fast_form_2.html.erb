@@ -1,0 +1,107 @@
+<%= simple_form_for(reservation, local:true) do |f| %>
+<%= f.error_notification %>
+<%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<% if defined?(property) %>
+<% current_property = property %>
+<% else %>
+<% current_property = reservation.property %>
+<% end %>
+<% disabled_dates = (current_property.get_unavailable_days + current_user.get_unavailable_days).uniq %>
+<div class="form-inputs" style="padding: 15px;
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+    background: #576f8b;
+    flex-direction: column;
+    color: white;
+    border-radius: 15px;
+    ">
+    <%= f.input :property_id, input_html: {value: current_property.id}, as: :hidden %>
+    <%= f.input :user_id, input_html: {value: current_user.id}, as: :hidden %>
+
+    <div style="display: flex
+;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+    width: 100%;">
+        <p style="    margin: 0;
+    font-size: 13px;
+    font-weight: 100;
+    text-decoration: underline;">Reservation</p>
+        <div style="display: flex;align-items: center;justify-content: center;gap: 5px;">
+         <i class="fas fa-user-lock" style="color: white;font-size:10px;"></i>
+        <%= f.input :is_private, label:false %>
+       
+        </div>
+
+    </div>
+
+<div style="display: flex
+;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-direction: column;">
+    <div class="my-label" style="display: flex;gap: 10px;align-items: center;justify-content: center;">
+        <div class="awesom-title" style="margin:0;gap:3px;">
+            <i class="fas fa-calendar"></i>
+            <p style="margin:0;font-size:8px;font-weight:100;">Du:</p>
+        </div>
+        <%= f.text_field :start_date,
+    data: {
+      controller: "flatpickr",
+      flatpickr_alt_input: true,
+      flatpickr_min_date: Time.zone.now,
+      flatpickr_enable_time: true,
+      flatpickr_disable: disabled_dates, #disables individual dates
+      flatpickr_time_24hr: true,
+      flatpickr_disable_mobile: true
+
+    }, style:"background:white!important;"  %>
+    </div>
+    <div class="my-label" style="display: flex;gap: 10px;align-items: center;justify-content: center;">
+        <div class="awesom-title" style="margin:0;gap:3px;">
+            <i class="fas fa-calendar"></i>
+            <p style="margin:0;font-size:8px;font-weight:100;">Au:</p>
+        </div>
+        <%= f.text_field :end_date,
+    data: {
+      controller: "flatpickr",
+      flatpickr_alt_input: true,
+      flatpickr_min_date: Time.zone.now,
+      flatpickr_enable_time: true,
+      flatpickr_disable: disabled_dates, #disables individual dates
+      flatpickr_time_24hr: true,
+      flatpickr_disable_mobile: true
+
+
+    } %>
+    </div>
+</div>
+ <div class="form-actions" style="display:none;">
+            <%= f.button :submit, "Book !", class:"btn cta cta-secondary", style:"width:100%;", disabled: !current_property.reservable, data:{ disable_with: "Processing..." }, class:"property-#{current_property.id}" %>
+        </div>
+<%= f.input :guest_count,label:false, input_html: {value: 1}, as: :hidden %>
+<%= f.input :comment, label: false, input_html: {value: "Fast reservation"}, as: :hidden %>
+</div>
+<% end %>
+<style>
+.reservation_is_private{
+    width:9px;
+}
+#reservation_start_date + input {
+    background-color:white!important;
+    border:none;
+    font-size:5px!important;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+#reservation_end_date + input {
+    background-color:white!important;
+    border:none;
+    font-size:5px!important;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+</style>

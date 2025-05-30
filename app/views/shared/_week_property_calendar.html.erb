@@ -1,5 +1,9 @@
 <%= week_calendar(events: property.reservations.where.not(status: 0), attribute: :start_date, end_attribute: :end_date) do |date, reservations| %>
-  <div class="week-reservations-container">
+  <div class="week-reservations-container" style="display: flex
+;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;">
     <p style="
 
     margin: 0;
@@ -7,17 +11,18 @@
     padding: 1.5px 5px;
     border-radius: 5px;
     <%= 'border:none;background: rgb(87, 111, 139)!important;color: white!important;border: 1px solid white;' if date == Date.today %>"><%= date.day %></p>
-    <div class="weekly-reservations">
+    <div class="weekly-reservations" style=display: flex
+;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;"">
       <% reservations.each do |reservation| %>
-        <a class="hover-underline-animation norm user collapse-toggle" data-toggle="collapse" href="#collapse-<%= reservation.id %>" role="button" aria-expanded="false" aria-controls="collapse-<%= reservation.id %>" style="text-decoration:none;color:white;font-size:.75rem;margin-bottom:0;text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;margin-bottom:5px;display:flex;align-items:center;justify-content: flex-start;gap:5px;margin-top:5px;">
+        <a class="hover-underline-animation norm user collapse-toggle" data-toggle="collapse" href="#collapse-<%= reservation.id %>" role="button" aria-expanded="false" aria-controls="collapse-<%= reservation.id %>" style="">
           <% if reservation.user.avatar.attached? %>
             <%= cl_image_tag reservation.user.avatar.key, :gravity=>"face", :crop=>"fill", :height=>150, :width=>150, :quality=>"auto", style:"width:20px;height:20px;border-radius:500px;" %>
           <% else %>
             <img src="/help_avatar.png" style="width:20px;height:20px;border-radius:500px;" alt="">
           <% end %>
-          <p class="reservation-name" style="margin-bottom:0;"><%= reservation.user.first_name %></p>
         </a>
       <% end %>
     </div>
@@ -32,9 +37,9 @@
 </div>
 <script></script>
 <style>
-@media screen and (max-width: 768px){
-  .reservation-name {
-    display: none;
+  @media screen and (max-width: 768px){
+    .reservation-name {
+      display: none;
+    }
   }
-}
 </style>

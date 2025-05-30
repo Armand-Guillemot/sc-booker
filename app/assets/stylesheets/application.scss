@@ -135,6 +135,13 @@ input.is-valid {
   height: 0!important;
 }
 
+.week-reservations-container .week-calendar {
+  .has-events {
+    background: red;
+    color: white;
+  }
+}
+
 @media only screen and (max-width: 550px) {
   .info-and-reservation {
     display: flex;
