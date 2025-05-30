@@ -1,45 +1,23 @@
 <%= week_calendar(events: property.reservations.where.not(status: 0), attribute: :start_date, end_attribute: :end_date) do |date, reservations| %>
-  <div class="week-reservations-container" style="display: flex
+<div class="week-reservations-container" style="display: flex
 ;
     align-items: center;
     justify-content: center;
     flex-direction: column;">
-    <p style="
-
-    margin: 0;
-    display: inline-block;
-    padding: 1.5px 5px;
-    border-radius: 5px;
-    <%= 'border:none;background: rgb(87, 111, 139)!important;color: white!important;border: 1px solid white;' if date == Date.today %>"><%= date.day %></p>
-    <div class="weekly-reservations" style=display: flex
-;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;"">
-      <% reservations.each do |reservation| %>
-        <a class="hover-underline-animation norm user collapse-toggle" data-toggle="collapse" href="#collapse-<%= reservation.id %>" role="button" aria-expanded="false" aria-controls="collapse-<%= reservation.id %>" style="">
-          <% if reservation.user.avatar.attached? %>
-            <%= cl_image_tag reservation.user.avatar.key, :gravity=>"face", :crop=>"fill", :height=>150, :width=>150, :quality=>"auto", style:"width:20px;height:20px;border-radius:500px;" %>
-          <% else %>
-            <img src="/help_avatar.png" style="width:20px;height:20px;border-radius:500px;" alt="">
-          <% end %>
-        </a>
-      <% end %>
+    <div style="box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;margin: 0; width: 30px;height: 30px;border-radius: 5px;border: none!important;background: rgb(87, 111, 139) !important;color: white !important;display: flex;align-items: center;justify-content: center;padding: 20px;margin:2px;position:relative;<%= 'border:none;background: #a6a6a6!important;color: white!important;' if reservations.present? %>">
+        <p style="margin:0;font-weight:100;"><%= date.day %></p>
+        <% if date == Date.today %>
+        <div style="height:7.5px;width:7.5px;border-radius:100px;background-color:#f2f2f2;position:absolute;right:-1px;top:-1px;box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;"></div>
+        <% end %>
     </div>
-  </div>
-<% end %>
-<div class="">
-  <% property.reservations.where.not(status: 0).each do |reservation| %>
-    <div class="collapse" id="collapse-<%= reservation.id %>">
-      <%= render 'shared/property_reservation', reservation: reservation%>
-    </div>
-  <% end %>
 </div>
+<% end %>
+
 <script></script>
 <style>
-  @media screen and (max-width: 768px){
-    .reservation-name {
-      display: none;
+    @media screen and (max-width: 768px) {
+        .reservation-name {
+            display: none;
+        }
     }
-  }
 </style>

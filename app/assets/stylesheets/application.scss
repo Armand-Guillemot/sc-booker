@@ -135,10 +135,23 @@ input.is-valid {
   height: 0!important;
 }
 
-.week-reservations-container .week-calendar {
-  .has-events {
-    background: red;
+.prop-index {
+  table {
+    margin-bottom: 0;
+    table-layout: fixed;
+    border-radius: 15px;
+    overflow: hidden;
+    background: transparent!important;
+    border: none!important;
+    box-shadow:none!important;
+  }
+  .day {
+    background: transparent!important;
     color: white;
+    border:none!important;
+    &.has-events  {
+      color: red!important;
+    }
   }
 }
 
