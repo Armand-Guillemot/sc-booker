@@ -34,7 +34,8 @@
     text-decoration: underline;">Reservation</p>
         <div style="display: flex;align-items: center;justify-content: center;gap: 5px;display:none;">
          <i class="fas fa-user-lock" style="color: white;font-size:10px;"></i>
-        <%= f.input :is_private, label:false %>
+       <%= f.input :is_private, label: false, input_html: { class: "isprivate-#{current_property.id}", style:"" } %>
+
        
         </div>
 

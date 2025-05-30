@@ -1,32 +1,73 @@
 <div class="property-card-2">
 
     <div class="upper-card">
-        <%= link_to property_path(property), class:"", style:"text-decoration:none!important;align-self: flex-end;", :"data-turbolinks" => false do %>
-        <%= cl_image_tag property.main_photo.key, :crop=>"fill", :quality=>"auto", style:"width:100%;max-width: 190px;aspect-ratio:1/1;border-radius:15px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;" %>
+        <%= link_to property_path(property), class:"", style:"text-decoration:none!important;align-self: flex-end;",
+            :"data-turbolinks"=> false do %>
+            <%= cl_image_tag property.main_photo.key, :crop=>"fill", :quality=>"auto", style:"width:100%;max-width:
+                190px;aspect-ratio:1/1;border-radius:15px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;" %>
 
-        <% end %>
+                <% end %>
 
-        <div class="upper-card-title-form" style="display: flex
+                    <div class="upper-card-title-form" style="display: flex
 ;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;">
 
-            <%= link_to property_path(property), class:"upper-card-title", style:"text-decoration:none!important;", :"data-turbolinks" => false do %>
-            <h4 style="font-size: calc(1.3rem + 0.2vw);margin:0;text-align:center;color:#576f8b;"><%= property.name %></h4>
-            <p style="margin:0;font-size:10px;font-weight:100;text-align:center;color:#576f8b;margin-top:-5px;">Disponible</p>
+                        <%= link_to property_path(property), class:"upper-card-title",
+                            style:"text-decoration:none!important;", :"data-turbolinks"=> false do %>
+                            <h4 style="font-size: calc(1.3rem + 0.2vw);margin:0;text-align:center;color:#576f8b;">
+                                <%= property.name %>
+                            </h4>
+                            <p
+                                style="margin:0;font-size:10px;font-weight:100;text-align:center;color:#576f8b;margin-top:-5px;">
+                                Disponible</p>
 
-            <% end %>
+                            <% end %>
 
-            <div class="upper-card-form">
-                <%= render 'reservations/fast_form_2', reservation: Reservation.new(), property: property%>
-            </div>
+                                <div class="upper-card-form">
+                                    <%= render 'reservations/fast_form_2' , reservation: Reservation.new(), property:
+                                        property%>
+                                </div>
+                    </div>
+
+    </div>
+    <div style="    width: 100%;
+    background-color: #576f8b;
+    color: rgba(255,255,255,0.9);
+    padding: 7px 12px;
+    border-radius: 10px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+        <div class="checkbox-wrapper-13"
+            style="display: flex;align-items: center;justify-content: flex-start;gap: 5px;">
+            <input 
+  id="c1-13" 
+  type="checkbox" 
+  checked 
+  style="transform: scale(0.6); border: none; border-radius: 3px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;border:1px solid white!important;" 
+  onclick="document.querySelector('.isprivate-<%= property.id%>')?.click();"
+>
+            <p style="    margin: 0;
+    font-size: 9px;font-weight: 100;
+    font-weight: 100;text-decoration: underline;">Je veux que ma reservation soit privée</p>
         </div>
+        <div class="checkbox-wrapper-13"
+            style="display: flex;align-items: center;justify-content: flex-start;gap: 5px;">
+            <input id="c1-14"  type="checkbox" style=" border:1px solid white!important;   transform: scale(0.6);
+    border: none;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
+            <p style="    margin: 0;
+    font-size: 9px;font-weight: 100;
+    font-weight: 100;text-decoration: underline;">Je m'engage à faire le ménage avant de partir</p>
+        </div>
+
+
+
 
     </div>
 
-        <div class="lower-card">
-        <%= render 'shared/week_property_calendar', property: property%>
+    <div class="lower-card">
+        <%= render 'shared/week_property_calendar' , property: property%>
     </div>
     <div class="middle-card" style="width:100%">
         <button onclick="
@@ -76,6 +117,7 @@
         .form-check {
             min-height: 15px;
             padding-left: 15px;
+
             >input {
                 font-size: 12px !important;
             }
@@ -89,8 +131,117 @@
         gap: 15px;
     }
 
-    .upper-card-title {
-   
+    .upper-card-title {}
 
+    @supports (-webkit-appearance: none) or (-moz-appearance: none) {
+        .checkbox-wrapper-13 input[type=checkbox] {
+            --active: #576f8b;
+            --active-inner: #fff;
+            --focus: 2px rgba(39, 94, 254, .3);
+            --border: #BBC1E1;
+            --border-hover: #576f8b;
+            --background: #fff;
+            --disabled: #F6F8FF;
+            --disabled-inner: #E1E6F9;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            height: 21px;
+            outline: none;
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+            margin: 0;
+            cursor: pointer;
+            border: 1px solid var(--bc, var(--border));
+            background: var(--b, var(--background));
+            transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+        }
+
+        .checkbox-wrapper-13 input[type=checkbox]:after {
+            content: "";
+            display: block;
+            left: 0;
+            top: 0;
+            position: absolute;
+            transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
+        }
+
+        .checkbox-wrapper-13 input[type=checkbox]:checked {
+            --b: var(--active);
+            --bc: var(--active);
+            --d-o: .3s;
+            --d-t: .6s;
+            --d-t-e: cubic-bezier(.2, .85, .32, 1.2);
+        }
+
+        .checkbox-wrapper-13 input[type=checkbox]:disabled {
+            --b: var(--disabled);
+            cursor: not-allowed;
+            opacity: 0.9;
+        }
+
+        .checkbox-wrapper-13 input[type=checkbox]:disabled:checked {
+            --b: var(--disabled-inner);
+            --bc: var(--border);
+        }
+
+        .checkbox-wrapper-13 input[type=checkbox]:disabled+label {
+            cursor: not-allowed;
+        }
+
+        .checkbox-wrapper-13 input[type=checkbox]:hover:not(:checked):not(:disabled) {
+            --bc: var(--border-hover);
+        }
+
+        .checkbox-wrapper-13 input[type=checkbox]:focus {
+            box-shadow: 0 0 0 var(--focus);
+        }
+
+        .checkbox-wrapper-13 input[type=checkbox]:not(.switch) {
+            width: 21px;
+        }
+
+        .checkbox-wrapper-13 input[type=checkbox]:not(.switch):after {
+            opacity: var(--o, 0);
+        }
+
+        .checkbox-wrapper-13 input[type=checkbox]:not(.switch):checked {
+            --o: 1;
+        }
+
+        .checkbox-wrapper-13 input[type=checkbox]+label {
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer;
+            margin-left: 4px;
+        }
+
+        .checkbox-wrapper-13 input[type=checkbox]:not(.switch) {
+            border-radius: 7px;
+        }
+
+        .checkbox-wrapper-13 input[type=checkbox]:not(.switch):after {
+            width: 5px;
+            height: 9px;
+            border: 2px solid var(--active-inner);
+            border-top: 0;
+            border-left: 0;
+            left: 7px;
+            top: 4px;
+            transform: rotate(var(--r, 20deg));
+        }
+
+        .checkbox-wrapper-13 input[type=checkbox]:not(.switch):checked {
+            --r: 43deg;
+        }
+    }
+
+    .checkbox-wrapper-13 * {
+        box-sizing: inherit;
+    }
+
+    .checkbox-wrapper-13 *:before,
+    .checkbox-wrapper-13 *:after {
+        box-sizing: inherit;
     }
 </style>
