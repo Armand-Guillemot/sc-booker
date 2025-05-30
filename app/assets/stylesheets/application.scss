@@ -149,6 +149,7 @@ input.is-valid {
     background: transparent!important;
     color: white;
     border:none!important;
+    padding: 0!important;
     &.has-events  {
       color: red!important;
     }

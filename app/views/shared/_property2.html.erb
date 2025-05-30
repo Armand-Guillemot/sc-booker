@@ -14,7 +14,7 @@
 
             <%= link_to property_path(property), class:"upper-card-title", style:"text-decoration:none!important;", :"data-turbolinks" => false do %>
             <h4 style="font-size: calc(1.3rem + 0.2vw);margin:0;text-align:center;color:#576f8b;"><%= property.name %></h4>
-            <p style="margin:0;font-size:10px;font-weight:100;text-align:center;color:#576f8b;">Disponible</p>
+            <p style="margin:0;font-size:10px;font-weight:100;text-align:center;color:#576f8b;margin-top:-5px;">Disponible</p>
 
             <% end %>
 
@@ -24,6 +24,7 @@
         </div>
 
     </div>
+
         <div class="lower-card">
         <%= render 'shared/week_property_calendar', property: property%>
     </div>
